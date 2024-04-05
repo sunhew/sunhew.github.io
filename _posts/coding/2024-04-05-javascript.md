@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 데이터의 연산자에 관하여
+title pin : true : 데이터의 연산자에 관하여
 date: 2024-04-05 17:29 +0900
 description: 자바스크립트의 함수에 대하여.
 image: ../assets/img/javascript01.jpg

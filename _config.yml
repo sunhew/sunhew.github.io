@@ -14,9 +14,9 @@ timezone: Asia/Seoul
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: Sunhew # the main title
+title: sunhew # the main title
 
-tagline: Developer Sunhew
+tagline: Developer sunhew
 
 description: >- # used by seo meta and the atom feed
   hi!😊
@@ -26,25 +26,25 @@ description: >- # used by seo meta and the atom feed
 url: "https://sunhew.github.io"
 
 github:
-  username: Sunhew # change to your github username
+  username: sunhew # change to your github username
 
 twitter:
-  username: Sunhew # change to your twitter username
+  username: sunhew # change to your twitter username
 
 social:
   # Change to your full name.
   # It will be displayed as the default author of the posts and the copyright owner in the Footer
-  name: Sunhew
-  email: liarusen@gmail.com # change to your email address
+  name: sunhew
+  email: nicejpm@naver.com # change to your email address
   links:
     # The first element serves as the copyright owner's link
-    - https://twitter.com/webs9919 # change to your twitter homepage
+    - https://twitter.com/sunhew # change to your twitter homepage
     - https://github.com/sunhew # change to your github homepage
     # Uncomment below to add more social links
     # - https://www.facebook.com/username
     # - https://www.linkedin.com/in/username
 
-google_site_verification: # fill in to your verification string
+google_site_verification:
 
 # ↑ --------------------------
 # The end of `jekyll-seo-tag` settings
@@ -73,7 +73,7 @@ theme_mode: # [light|dark]
 img_cdn:
 
 # the avatar on sidebar, support local or CORS resources
-avatar: ./assets/img/info_8.png
+avatar: ../assets/img/img1.jpg
 
 # The URL of the site-wide social preview image used in SEO `og:image` meta tag.
 # It can be overridden by a customized `page.image` in front matter.
@@ -138,7 +138,7 @@ defaults:
       layout: page
       permalink: /:title/
   - scope:
-      path: assets/img/favicons/favicon.ico
+      path: ./assets/img/favicons/favicon.ico
     values:
       swcache: true
   - scope:
@@ -191,3 +191,5 @@ jekyll_compose:
       tags:
       published: true
       sitemap: true
+
+

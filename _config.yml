@@ -16,7 +16,7 @@ timezone: Asia/Seoul
 
 title: Sunhew # the main title
 
-tagline: Developer wonyoung
+tagline: Developer Sunhew
 
 description: >- # used by seo meta and the atom feed
   hi!😊
@@ -35,7 +35,7 @@ social:
   # Change to your full name.
   # It will be displayed as the default author of the posts and the copyright owner in the Footer
   name: Sunhew
-  email: gsim12@naver.com # change to your email address
+  email: liarusen@gmail.com # change to your email address
   links:
     # The first element serves as the copyright owner's link
     - https://twitter.com/webs9919 # change to your twitter homepage
@@ -138,7 +138,7 @@ defaults:
       layout: page
       permalink: /:title/
   - scope:
-      path: assets/img/favicon.ico
+      path: assets/img/favicons/favicon.ico
     values:
       swcache: true
   - scope:

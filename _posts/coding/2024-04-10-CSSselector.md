@@ -1,8 +1,8 @@
 ---
 layout: post
 title: 선택자(selector)
-date: 2024-04-09 17:00 +0900
-description: 문자 관련 스타일에 관하여
+date: 2024-04-10 16:25 +0900
+description: CSS의 선택자의 종류
 image: ../assets/img/yahossinnanda.jpg
 category: CSS
 tags: CSS

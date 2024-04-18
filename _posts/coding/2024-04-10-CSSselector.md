@@ -3,7 +3,7 @@ layout: post
 title: 선택자(selector)
 date: 2024-04-10 16:25 +0900
 description: CSS의 선택자의 종류
-image: ../assets/img/yahossinnanda.jpg
+image: ../assets/img/css.png
 category: CSS
 tags: CSS
 published: true

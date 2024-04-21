@@ -204,51 +204,53 @@ function showMessage() {
 * 요소가 보이지 않지만, 레이아웃에서 여전히 공간을 차지합니다.<br/>
 
 ---
-### __display: none__ <br/>
-display: none은 CSS 속성 중 하나로, __지정된 요소를 문서 레이아웃에서 완전히 제거하고 화면에 표시하지 않습니다.__ 이 속성은 요소를 숨기고 싶을 때 유용하게 사용될 수 있으며, __요소가 문서의 흐름에서 완전히 제거되므로 다른 요소들이 그 자리를 차지하게 됩니다.__ none은 요소를 완전히 숨기고 싶을 때 사용하는 반면, __visibility: hidden은 요소를 숨기되 그 위치를 유지__ 하고 싶을 때 사용합니다. <br/>
+### __display: flex__ <br/>
+isplay: flex속성은 __플렉스박스 레이아웃(Flexible Box Layout)을 설정하여, 컨테이너 내 아이템들의 배치, 정렬, 분배를 유연하게 조정할 수 있게 해줍니다.__ 이는 복잡한 레이아웃을 보다 간단하게 구성할 수 있도록 돕는 강력한 도구입니다. 플렉스박스는 반응형 웹 디자인을 구현할 때 특히 유용합니다. <br/>
 
 ```html
-<div id="hiddenMessage">이 메시지는 숨겨집니다.</div>
-<button onclick="showMessage()">메시지 보기</button>
+<div class="container">
+  <div>Box 1</div>
+  <div>Box 2</div>
+  <div>Box 3</div>
+</div>
 ```
 
 ```css
-#hiddenMessage {
-  display: none;
+.container {
+  display: flex;
+  justify-content: center; /* 아이템들을 주축을 따라 중앙 정렬 */
+  align-items: center; /* 아이템들을 교차축을 따라 중앙 정렬 */
 }
 ```
 
-```javascript
-function showMessage() {
-  document.getElementById('hiddenMessage').style.display = "block";
-}
-```
-위의 예시에서는 __div 요소가 처음에는 숨겨져 있으며, 사용자가 버튼을 클릭하면 JavaScript 함수가 호출되어 display 속성을 block으로 변경하여 요소를 보이게 합니다.__<br/>
+위의 코드는 CSS와 HTML은 3개의 박스를 가로로 정렬하는 간단한 플렉스박스 레이아웃 예시입니다. __.container는 플렉스 컨테이너가 되며, 내부의 div들은 플렉스 아이템으로 작동__ 합니다. __justify-content와 align-items 속성을 사용해 아이템들을 가로축과 세로축에서 중앙에 정렬합니다.__<br/>
 
 #### __주요 특징__ <br/>
 
-##### __문서 레이아웃에서 제거__ <br/>
-* display: none;으로 설정된 요소는 렌더링되지 않으며, 해당 요소에 할당된 공간도 사라집니다. 즉, 화면에서 요소가 차지하던 공간이 다른 요소들로 채워지게 됩니다.<br/>
+##### __플렉스 컨테이너(Flex Container) 설정__ <br/>
+* display: flex 속성을 사용하면 해당 요소는 __플렉스 컨테이너__ 가 됩니다. 이 컨테이너 내의 __직계 자식 요소들은 자동으로 플렉스 아이템(flex items)__ 이 됩니다.<br/>
 
-##### __크기 지정 가능__ <br/>
-* inline-block 요소는 상하 여백과 패딩을 지정할 수 있습니다. __인라인 요소에서는 좌우 여백과 패딩만 적용되는 반면, inline-block 요소에서는 상하 여백과 패딩도 효과적으로 적용__ 됩니다.<br/>
+##### __주축(Main Axis)과 교차축(Cross Axis)__ <br/>
+* 주축(Main Axis): 플렉스 아이템들이 배치되는 주된 __방향__ 을 의미합니다. 기본값은 가로 방향입니다(flex-direction: row;).<br/>
 
-##### __상하 여백(margin)과 패딩(padding) 지정__ <br/>
-* width와 height 속성을 사용하여 요소의 너비와 높이를 지정할 수 있습니다. 이는 인라인 요소와 대비됩니다.<br/>
+* 교차축(Cross Axis): 교차축(Cross Axis): 주축에 __수직인 방향__ 입니다. 기본값에서는 세로 방향이 됩니다.<br/>
 
-##### __내부 배치__ <br/>
-* __inline-block 요소 내부에는 인라인 요소와 블록 요소 모두 배치할 수 있습니다.__ 는 레이아웃 구성에 유연성을 제공합니다.<br/>
+#### __중요한 속성들__ <br/>
 
-##### __텍스트나 다른 인라인 요소와 함께 묶여서 표시__ <br/>
-* 인라인 요소는 텍스트나 다른 인라인 요소와 함께 한 줄에 나란히 배치됩니다.<br/>
+##### __flex-direction__ <br/>
+* 주축의 방향을 설정합니다. 예: __row__ (가로), __column__ (세로) <br/>
 
-#### __사용 사례__ <br/>
+##### __justify-content__ <br/>
+* 주축을 따라 플렉스 아이템의 정렬을 결정합니다. 예: __flex-start, center, space-between__ <br/>
 
-##### __텍스트 강조__ <br/>
-* span 태그는 텍스트 일부분에 스타일을 적용할 때 사용합니다.<br/>
+##### __align-items__ <br/>
+* 교차축을 따라 플렉스 아이템의 정렬을 결정합니다. 예: __flex-start, center, stretch__ <br/>
 
-##### __링크__ <br/>
-* a 태그는 하이퍼링크를 생성하며 기본적으로 인라인 요소입니다.<br/>
+##### __flex-wrap__ <br/>
+* 아이템들이 컨테이너를 벗어날 경우, 줄 바꿈 여부를 결정합니다. 예: __nowrap, wrap__ <br/>
 
-##### __텍스트 요소__ <br/>
-* __strong, em__ 등의 태그는 텍스트를 강조하거나 기울이기 위해 사용되며 인라인 요소입니다.<br/>
+##### __flex-flow__ <br/>
+* flex-direction과 flex-wrap의 단축 속성입니다. <br/>
+
+##### __align-content__ <br/>
+* 여러 줄의 플렉스 아이템을 교차축을 따라 정렬합니다. 이는 __flex-wrap__ 속성이 __wrap__ 일 때만 작동합니다.<br/>

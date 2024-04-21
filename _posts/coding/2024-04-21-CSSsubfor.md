@@ -1,7 +1,7 @@
 ---
 layout: post
 title: CSS display 정리
-date: 2024-04-20 17:42 +0900
+date: 2024-04-21 21:08 +0900
 description: CSS의 속성들 정리 세번째
 image: ../assets/img/css.png
 category: CSS 속성
@@ -14,7 +14,7 @@ sitemap: true
 ### CSS의 속성 목록
 * ~~transform~~ <br/>
 * ~~position~~ <br/>
-* display <br/>
+* ~~display~~ <br/>
 * transition <br/>
 * z-index <br/>
 * height: inherit <br/>

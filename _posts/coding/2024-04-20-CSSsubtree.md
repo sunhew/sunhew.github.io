@@ -254,3 +254,96 @@ isplay: flex속성은 __플렉스박스 레이아웃(Flexible Box Layout)을 설
 
 ##### __align-content__ <br/>
 * 여러 줄의 플렉스 아이템을 교차축을 따라 정렬합니다. 이는 __flex-wrap__ 속성이 __wrap__ 일 때만 작동합니다.<br/>
+
+---
+### __display: grid__ <br/>
+isplay: grid는 __CSS Grid Layout을 활성화하는 속성__ 입니다. 이것은 웹 페이지의 레이아웃을 __더 유연하고, 간단하며, 강력하게 만들어주는 2차원 레이아웃 시스템__ 입니다. CSS Grid는 복잡한 레이아웃을 쉽게 구현할 수 있게 해주며, 행(row)과 열(column) 기반의 레이아웃을 생성할 수 있습니다. CSS Grid는 복잡한 웹 레이아웃을 손쉽게 구현할 수 있게 해주는 강력한 도구이며 Flexbox와 함께 사용하면 더욱 다양한 레이아웃을 구성할 수 있습니다.<br/>
+
+```css
+.container {
+  display: grid;
+  grid-template-columns: 100px 200px auto;
+  grid-template-rows: 50px 100px;
+  gap: 10px;
+}
+```
+
+위의 코드는  CSS는 .container 클래스를 가진 요소에 그리드 레이아웃을 적용합니다. 이 __레이아웃은 세 개의 열(100px, 200px, 나머지 공간을 차지하는 auto)과 두 개의 행(50px, 100px)으로 구성__ 됩니다. __그리드 셀 사이의 간격은 10px__ 입니다.<br/>
+
+#### __주요 특징__ <br/>
+
+##### __그리드 컨테이너(Grid Container)__ <br/>
+* display: grid를 적용한 요소는 그리드 컨테이너가 됩니다. 이 컨테이너 내의 직접적인 자식 요소들은 그리드 아이템(grid items)이 됩니다.<br/>
+
+##### __그리드 트랙(Grid Tracks)__ <br/>
+* 행(row)과 열(column)은 그리드 트랙을 형성합니다. 이들은 __grid-template-rows와 grid-template-columns__ 속성을 사용하여 정의할 수 있습니다.<br/>
+
+##### __그리드 셀(Grid Cell)__ <br/>
+* 그리드의 가장 작은 단위로, 하나의 그리드 아이템이 배치될 수 있는 공간입니다. <br/>
+
+##### __그리드 라인(Grid Line)__ <br/>
+* 그리드 셀을 구분하는 라인입니다. __행과 열의 시작점과 끝점을 정의__ 하는데 사용됩니다. <br/>
+
+##### __그리드 갭(Grid Gap)__ <br/>
+* 그리드 셀 사이의 공간입니다. __grid-gap, grid-row-gap, grid-column-gap__ 속성을 통해 조절할 수 있습니다.<br/>
+
+#### __Grid 사용시 고려할 점__ <br/>
+
+##### __브라우저 호환성__ <br/>
+* 대부분의 최신 브라우저는 CSS Grid를 지원하지만, 오래된 브라우저나 특정 버전에서는 지원하지 않을 수 있습니다. 사용 전에 호환성을 확인하세요. <br/>
+
+##### __반응형 디자인__ <br/>
+* __auto-fill, auto-fit__ 과 같은 그리드 속성을 사용하여 __그리드 레이아웃을 반응형__ 으로 만들 수 있습니다.<br/>
+
+---
+### __display: table, table-row, table-cell 등__ <br/>
+CSS에서 __display: table, table-row, table-cell__ 등의 속성들은 HTML의 __table, tr, td__ 태그와 유사한 레이아웃을 CSS만으로 구현할 수 있게 해줍니다. 이 방식은 표 형태의 데이터를 보여주는 것이 아니라도, 웹 페이지의 레이아웃을 구성하는 데 유용하게 사용될 수 있습니다.<br/>
+
+```html
+<div class="table">
+  <div class="row">
+    <div class="cell">셀 1</div>
+    <div class="cell">셀 2</div>
+  </div>
+  <div class="row">
+    <div class="cell">셀 3</div>
+    <div class="cell">셀 4</div>
+  </div>
+</div>
+```
+
+```css
+.table {
+  display: table;
+  border: 1px solid #000;
+}
+
+.row {
+  display: table-row;
+}
+
+.cell {
+  display: table-cell;
+  border: 1px solid #000;
+  padding: 5px;
+}
+```
+
+위의 코드에서 __.table, .row, .cell__ 클래스를 가진 요소들은 각각 __table, tr, td__ 태그와 유사하게 동작하여 __2x2 테이블을 만듭니다.__<br/>
+
+#### __각각의 설명__ <br/>
+
+##### __display: table__ <br/>
+* 이 속성은 요소를 __테이블과 같은 블록 레벨 컨테이너로 만듭니다.__ 즉, 원래의 _table_ 태그와 같은 역할을 합니다. 이 요소의 자식 요소들은 __table-row, table-cell 등의 속성을 사용하여 테이블의 행과 셀로 동작__ 하게 할 수 있습니다.<br/>
+
+##### __display: table-row__ <br/>
+* table-row 속성을 사용하면 그 요소는 __테이블의 한 행(tr)처럼 동작합니다.__ 이 요소의 자식들은 자동으로 __table-cell 역할을 하게 되어, 테이블의 셀(td 또는 th)처럼 동작__ 합니다.<br/>
+
+##### __display: table-cell__ <br/>
+* table-cell 속성을 적용한 요소는 __테이블의 셀(td 또는 th)처럼 동작__ 합니다. 이를 통해 요소들을 테이블 셀처럼 __나란히 배열할 수 있으며, vertical-align과 같은 테이블 셀에 특화된 속성들을 사용__ 할 수 있습니다.<br/>
+
+#### __사용 시 고려사항__ <br/>
+* CSS 테이블 레이아웃은 레거시 브라우저에서도 잘 동작하지만, 복잡한 테이블 레이아웃을 구현할 때는 __HTML의 table 태그를 사용하는 것이 더 의미적으로 적합__ 할 수 있으며 테이블 레이아웃을 사용할 때는 콘텐츠의 접근성을 고려해야 합니다. 데이터를 표현하는 목적이라면 __table__ 태그를 사용하는 것이 더 적합할 수 있습니다. <br/>
+
+##### __display__ <br/>
+* flex나 display: grid와 같은 더 현대적인 CSS 레이아웃 기술이 등장하면서, 테이블 레이아웃은 주로 __간단한 목적에 한정__ 되어 사용됩니다.<br/>

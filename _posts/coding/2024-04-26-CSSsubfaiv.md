@@ -1,6 +1,6 @@
 ---
 layout: post
-title: CSS 마지막 정리
+title: CSS 속성들의 마지막 정리
 date: 2024-04-26 17:00 +0900
 description: CSS의 속성들 정리 마지막
 image: ../assets/img/css.png

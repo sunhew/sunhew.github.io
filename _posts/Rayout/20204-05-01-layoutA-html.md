@@ -1,8 +1,8 @@
 ---
 layout: post
-title: 26일 시험 오답노트 1-1
-date: 2024-04-27 21:37 +0900
-description: 26일 시험 오답노트 첫번째
+title: 웹 디자인 실기 레이아웃A 유형 HTML
+date: 2024-05-01 14:12 +0900
+description: 웹 디자인 실기 레이아웃A유형
 image: ../assets/img/javascript.png
 category: 오답노트
 tags: 오답노트

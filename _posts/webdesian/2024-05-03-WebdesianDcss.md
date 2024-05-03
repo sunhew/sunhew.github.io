@@ -12,7 +12,7 @@ sitemap: true
 
 # 웹디자인기능사 실기 D유형의 HTML.
 html, css, script를 한곳에 포스팅 하기에는 너무나도 길어지면서 복잡해지기에 각각 나눠서 정리합니다.
-해당 포스팅에서는 html 구조를 다루고있습니다. 아래의 이미지는 완성된 사이트의 사진입니다. <br />
+해당 포스팅에서는 html 구조를 다루고있습니다. 아래의 이미지는 완성된 사이트의 사진입니다. <br />ㅇㅇㅇㅇ
 
 ![image 6](https://github.com/sunhew/sunhew.github.io/assets/161446039/7bb6ce69-fb40-453c-9c13-9953007e8e6e)
 

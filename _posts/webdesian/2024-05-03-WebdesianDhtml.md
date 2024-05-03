@@ -178,7 +178,7 @@ html, css, script를 한곳에 포스팅 하기에는 너무나도 길어지면�
                     <li><a href="#">지금의 서울</a>
                         <ul>
                             <li><a href="#">이벤트</a></li>
-                            <li><a href="#">축제&행사</a></li>
+                            <li><a href="#">축제, 행사</a></li>
                             <li><a href="#">전시</a></li>
                         </ul>
                     </li>
@@ -200,7 +200,7 @@ html, css, script를 한곳에 포스팅 하기에는 너무나도 길어지면�
                     </li>
                     <li><a href="#">여행정보</a>
                         <ul>
-                            <li><a href="#">가이브죽&지도</a></li>
+                            <li><a href="#">가이브북, 지도</a></li>
                             <li><a href="#">시티투어버스</a></li>
                             <li><a href="#">날씨</a></li>
                         </ul>

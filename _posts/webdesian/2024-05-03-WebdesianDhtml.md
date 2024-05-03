@@ -19,7 +19,7 @@ html, css, script를 한곳에 포스팅 하기에는 너무나도 길어지면�
 
 
 ### __웹디자인기능사 실기 D유형__
-* HTML <br/>
+* HTML ✔️ <br/>
 * CSS <br/>
 * jqery <br/>
 

@@ -61,6 +61,8 @@ html, css, script를 한곳에 포스팅 하기에는 너무나도 길어지면�
     </div>
 ```
 
+![image 7](https://github.com/sunhew/sunhew.github.io/assets/161446039/a3fa16fe-5f38-45ab-9486-2da00e729d20)
+
 ## __메인 구조 잡기__
 아직 구조 잡기에 익숙하지 않은 경우에는 __세부 구조를 잡기 전에 반드시 위의 기본적인 구조를 잡은뒤에 반드시 CSS 스타일까지 설정해서 원하는대로 영역이 적용되었는지 확인 후에 넘어가야합니다.__ 그렇지 않으면 어디서부터 잘못된것인지 찾기 힘들어집니다.<br/>
 
@@ -114,36 +116,11 @@ html, css, script를 한곳에 포스팅 하기에는 너무나도 길어지면�
             <section class="cont2">
                 <div class="notice">
                     <h3>공지사항</h3>
-                    <ul>
-                        <li><a href="#">낮과 밤이 아름다운 서울 축제</a><span>2024.04.01</span></li>
-                        <li><a href="#">서울 길거리 축제</a><span>2024.04.03</span></li>
-                        <li><a href="#">서울 지하철 2호선 운행 시간 변경 안내</a><span>2024.04.06</span></li>
-                        <li><a href="#">서울 박물관 특별 전시회 개최</a><span>2024.04.12</span></li>
-                        <li><a href="#">서울 지하철 노선 추가 확정</a><span>2024.04.20</span></li>
-                    </ul>
+                    
                 </div>
                 <div class="gallery">
                     <h3>서울 구석 갤러리</h3>
-                    <ul>
-                        <li>
-                            <a href="#">
-                                <img src="images/galley01.jpg" alt="한옥">
-                                <span>서울 한옥</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <img src="images/galley02.jpg" alt="한옥 정원">
-                                <span>한옥 정원</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <img src="images/galley03.jpg" alt="한옥">
-                                <span>서울 풍경</span>
-                            </a>
-                        </li>
-                    </ul>
+                    
                 </div>
             </section>
         </main>

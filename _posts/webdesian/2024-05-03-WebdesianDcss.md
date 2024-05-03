@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 웹 디자인기능사 실기 D유형 css
+title: 웹 디자인기능사 실기 D유형 css header
 date: 2024-05-03 12:48 +0900
 description: 웹 디자인기능사 실기 D유형
 image: ../assets/img/webdesian.png
@@ -12,290 +12,284 @@ sitemap: true
 
 # 웹디자인기능사 실기 D유형의 HTML.
 html, css, script를 한곳에 포스팅 하기에는 너무나도 길어지면서 복잡해지기에 각각 나눠서 정리합니다.
-해당 포스팅에서는 html 구조를 다루고있습니다. 아래의 이미지는 완성된 사이트의 사진입니다. <br />ㅇㅇㅇㅇ
+css을 세부적으로 나누어 다루고있지만 꽤나 길어서 __header, main, footer 나눠서 다룹니다.__ <br/>
+__"설정할 스타일 🔜 완성 이미지 🔜 코드 🔜 설명" 입니다.__<br/> 
+아래의 이미지는 완성된 사이트의 사진입니다. <br />
 
 ![image 6](https://github.com/sunhew/sunhew.github.io/assets/161446039/7bb6ce69-fb40-453c-9c13-9953007e8e6e)
 
 
-### __웹디자인기능사 실기 D유형__
+### __웹디자인기능사 실기 D유형의 header__
 * HTML <br/>
 * CSS <br/>
 * jqery <br/>
 
 ## __폴더 링크 연결확인하기와 언어 설정하기__<br/>
-다시 한번 style 링크가 index와 연결되었는지 확인 한 뒤에 가장 위에 사용할 언어부터 설정해줍니다. 아래 코드는 __CSS 파일이 UTF-8 문자 인코딩을 사용하여 작성되었음을 나타내는 선언__ 입니다. 이 선언은 __CSS 파일의 맨 처음 줄에 위치해야 하며, 다른 어떤 문자나 공백도 이 선언 앞에 오면 안 됩니다.__ UTF-8 인코딩은 국제적으로 가장 널리 사용되는 문자 인코딩 방식 중 하나로, 다양한 언어의 문자를 포함할 수 있으며, 웹 개발에서 표준적으로 사용됩니다. 이 선언을 사용함으로써 CSS 파일 내에서 다양한 언어의 문자를 정확하게 표현하고, 해석될 수 있도록 보장합니다.<br/>
 
 ```css
 @charset "UTF-8";
 ```
 
-## __기본적인 구조부터 잡기__
-우선은 전체 구조를 감싸기 위해 body 태그 안에 &lt;div id __"wrap"__ &gt;을 설정해줍니다. 그 뒤에는 만들어야 하는 사이트의 구조를 살펴본 뒤에 wrap안에 구역별로 나눠줍니다. 여기에서는 3단 구조로 갈것이며 공지사항의 글자를 누르면 팝엉창이 나와야하기에 __header, main, footer, modal__ 를 만들었습니다.<br/>
-후에 세부 구조를 구성할때에는 태그들이 더욱 많아지므로 구분할수있게 구역이 끝나는곳마다 주석처리를 해서 보기 쉽게 정리했습니다.
-나중에 해당 영역을 찾아야 할때에 큰 도움이 됩니다.<br/>
+다시 한번 style 링크가 index와 연결되었는지 확인 한 뒤에 가장 위에 사용할 언어부터 설정해줍니다. 아래 코드는 __CSS 파일이 UTF-8 문자 인코딩을 사용하여 작성되었음을 나타내는 선언__ 입니다. 이 선언은 __CSS 파일의 맨 처음 줄에 위치해야 하며, 다른 어떤 문자나 공백도 이 선언 앞에 오면 안 됩니다.__ UTF-8 인코딩은 국제적으로 가장 널리 사용되는 문자 인코딩 방식 중 하나로, 다양한 언어의 문자를 포함할 수 있으며, 웹 개발에서 표준적으로 사용됩니다. 이 선언을 사용함으로써 CSS 파일 내에서 다양한 언어의 문자를 정확하게 표현하고, 해석될 수 있도록 보장합니다.<br/>
+
+## __기본적인 구조 디자인하기__
 
 ![image 7](https://github.com/sunhew/sunhew.github.io/assets/161446039/a3fa16fe-5f38-45ab-9486-2da00e729d20)
 
 ```css
-<div id="wrap">
-        <header id="header">
-          
-        </header>
-        <!-- header -->
-        <main id="main">
-            
-        </main>
-        <!-- main -->
-        <footer id="footer">
-            
-        </footer>
-        <!-- footer -->
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: #333;
+}
 
-        <div class="modal">
-           
-        </div>
-        <!-- //modal -->
-    </div>
+a {
+    text-decoration: none;
+    color: #333;
+}
+
+li {
+    list-style: none;
+}
+
+#wrap {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* header */
+#header {
+    width: 200px;
+    height: 650px;
+    background-color: #AA9FA6;
+}
+
+/* main */
+#main {
+    width: calc(100% - 200px);
+    height: 650px;
+    background-color: #626262;
+}
+
+/* footer */
+#footer {
+    width: 100%;
+    height: 100px;
+    background-color: #ffdbdb;
+    display: flex;
+}
 ```
 
+우선은 시작하기에 앞서 이름을 불러올때 html에서 __id__ 를 줬으면 __#__, __class__ 를 주었다면 __.__ 이 붙어야합니다. id는 한번만 사용가능하고 class는 재사용이 가능하다는 차이점이 있습니다. <br/>
+전체 구조를 감싸기 위해 body 태그 안에 &lt;div id __"wrap"__ &gt;을 설정해줍니다. 그 뒤에는 만들어야 하는 사이트의 구조를 살펴본 뒤에 wrap안에 구역별로 나눠줍니다
+후에 세부 구조를 구성할때에는 태그들이 더욱 많아지므로 구분할수있게 구역이 끝나는곳마다 주석처리를 해서 보기 쉽게 정리해두면 나중에 해당 영역을 찾아야 할때에 큰 도움이 됩니다.<br/>
 
-## __메인 구조 잡기__
-아직 구조 잡기에 익숙하지 않은 경우에는 __세부 구조를 잡기 전에 반드시 위의 기본적인 구조를 잡은뒤에 반드시 CSS 스타일까지 설정해서 원하는대로 영역이 적용되었는지 확인 후에 넘어가야합니다.__ 그렇지 않으면 어디서부터 잘못된것인지 찾기 힘들어집니다.<br/>
+### __코드 설명__
 
-이어서 기본 구조를 완성한 뒤에는 세부 구조를 잡게 되는데 웹 디자인 기능사 실기시험의 경우에는 대부분의 구조안에 메인 메뉴와 서브메뉴가 있어 우선적으로는 메인 구조부터 잡은 뒤에 서브 구조를 잡겠습니다. 그리고 슬라이드 부분은 CSS에서 다룰 예정입니다.<br/>
-
-* &lt;a href="#"&gt; 의 작성 이유는 웹 표준중 하나인 __tab__ 키만으로도 이동할 수있어야 한다를 충족시키기 위해 작성되었습니다. 만약 눌렀을때에 다른 링크로 보내고 싶으면 href = __"#"__ 부분에 해당 링크를 적어주세요.<br/>
-
-![image 8](https://github.com/sunhew/sunhew.github.io/assets/161446039/c453db1e-f844-4600-ae1b-7d8dec2b5be8)
+#### __전체 스타일 재설정__
 
 ```css
-<div id="wrap">
-        <header id="header">
-            <h1 class="logo">
-                <a href="#">서울 구석구석</a>
-            </h1>
-            <nav class="nav">
-                <ul>
-                    <li><a href="#">지금의 서울</a></li>
-                    <li><a href="#">추천</a></li>
-                    <li><a href="#">여행지</a></li>
-                    <li><a href="#">여행정보</a></li>
-                </ul>
-            </nav>
-        </header>
-        <!-- header -->
-        <main id="main">
-            <section class="cont1">
-                <div class="sliders">
-                    <div class="slider_wrap">
-                        <div class="slider s1">
-                            <h2>서울 봄꽃 축제 안내</h2>
-                            <p>2024년 봄꽃 축제를 개최합니다.</p>
-                        </div>
-                        <div class="slider s2">
-                            <h2>서울 봄꽃 축제 안내</h2>
-                            <p>2024년 봄꽃 축제를 개최합니다.</p>
-                        </div>
-                        <div class="slider s3">
-                            <h2>서울 봄꽃 축제 안내</h2>
-                            <p>2024년 봄꽃 축제를 개최합니다.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="banner">
-                    <div>
-                        <h3>서울 풍경</h3>
-                        <p>매력적인 풍경에 빠져보세요.</p>
-                        <a href="#">클릭하기</a>
-                    </div>
-                </div>
-            </section>
-
-            <section class="cont2">
-                <div class="notice">
-                    <h3>공지사항</h3>
-                    
-                </div>
-                <div class="gallery">
-                    <h3>서울 구석 갤러리</h3>
-                    
-                </div>
-            </section>
-        </main>
-        <!-- main -->
-        <footer id="footer">
-            <div class="title">
-                <h1 class="logo">
-                    <a href="#">서울 구석구석</a>
-                </h1>
-            </div>
-            <div class="copy">
-                <p>COPYRIGHT 2024, ALL Rights Reserve</p>
-            </div>
-            <div class="family">
-                <select>
-                    <option value="1">서울 생태공원</option>
-                    <option value="2">서울 타워</option>
-                    <option value="3">서울 테마파크</option>
-                </select>
-            </div>
-        </footer>
-        <!-- footer -->
-
-        <div class="modal">
-            <h4>서울 둘레길 공사중</h4>
-            <p>안녕하세요. 서울 생태 공원입니다.
-                이번에 사고 예방을 위해 다시 정비를 하게 되어 아래 안내 기간동안의
-                통행이 불가 하게 되었습니다.
-                이용에 불편을 드려 죄송합니다.
-            </p>
-            <a href="#" class="popup_clpse">닫기</a>
-        </div>
-        <!-- //modal -->
-    </div>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: #333;
+}
 ```
 
-## __서브 구조 잡기__
-여기까지 했다면 css 부분은 모두 끝났습니다. 세부 구조까지 작성하게 되면 구조는 한눈에 파악하기 어려워져 문제 부분을 찾기 힘들어질 수 있으니 반드시 주석을 사용해 정리 해주세요.<br/>
+* __"*"__ 선택자는 모든 HTML 요소를 대상으로 합니다. <br/>
+* __margin__ 0과 padding: 0은 __모든 요소의 기본 마진과 패딩을 제거__ 합니다. 이는 브라우저 간 일관성을 확보하고, 레이아웃을 설계할 때 예상치 못한 여백으로 인한 문제를 방지하기 위함입니다.<br/>
+* __box-sizing__: border-box는 __요소의 크기 계산 방법을 변경__ 합니다. 이 설정은 요소의 너비와 높이가 테두리와 패딩을 포함하여 계산되도록 합니다. 이는 레이아웃을 더 예측 가능하게 만듭니다.<br/>
+* __color__: #333는 모든 요소의 기본 텍스트 색상을 어두운 회색(#333)으로 설정합니다.<br/>
 
-슬라이드가 넘어가는 부분은 jqery로 작성할것이며 마우스 오버 할때의 색상 변경은 CSS, Ui가 나오는 부분은 jqery로 정리하겠습니다!<br/>
-
-![image 9](https://github.com/sunhew/sunhew.github.io/assets/161446039/47e07150-2f5a-404f-8d55-172cafd828b1)
+#### __a와 li의 스타일 재설정__
 
 ```css
+a {
+    text-decoration: none;
+    color: #333;
+}
 
-        <header id="header">
-            <h1 class="logo">
-                <a href="#">서울 구석구석</a>
-            </h1>
-            <nav class="nav">
-                <ul>
-                    <li><a href="#">지금의 서울</a>
-                        <ul>
-                            <li><a href="#">이벤트</a></li>
-                            <li><a href="#">축제&행사</a></li>
-                            <li><a href="#">전시</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#">추천</a>
-                        <ul>
-                            <li><a href="#">에디터 추천</a></li>
-                            <li><a href="#">테마코스</a></li>
-                            <li><a href="#">도보해설관광</a></li>
-                            <li><a href="#">한류관광</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#">여행지</a>
-                        <ul>
-                            <li><a href="#">명소</a></li>
-                            <li><a href="#">엔터테인먼트</a></li>
-                            <li><a href="#">음식</a></li>
-                            <li><a href="#">게스트하우스</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#">여행정보</a>
-                        <ul>
-                            <li><a href="#">가이브죽&지도</a></li>
-                            <li><a href="#">시티투어버스</a></li>
-                            <li><a href="#">날씨</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </nav>
-        </header>
-        <!-- header -->
-        <main id="main">
-            <section class="cont1">
-                <div class="sliders">
-                    <div class="slider_wrap">
-                        <div class="slider s1">
-                            <h2>서울 봄꽃 축제 안내</h2>
-                            <p>2024년 봄꽃 축제를 개최합니다.</p>
-                        </div>
-                        <div class="slider s2">
-                            <h2>서울 봄꽃 축제 안내</h2>
-                            <p>2024년 봄꽃 축제를 개최합니다.</p>
-                        </div>
-                        <div class="slider s3">
-                            <h2>서울 봄꽃 축제 안내</h2>
-                            <p>2024년 봄꽃 축제를 개최합니다.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="banner">
-                    <div>
-                        <h3>서울 풍경</h3>
-                        <p>매력적인 풍경에 빠져보세요.</p>
-                        <a href="#">클릭하기</a>
-                    </div>
-                </div>
-            </section>
-
-            <section class="cont2">
-                <div class="notice">
-                    <h3>공지사항</h3>
-                    <ul>
-                        <li><a href="#">낮과 밤이 아름다운 서울 축제</a><span>2024.04.01</span></li>
-                        <li><a href="#">서울 길거리 축제</a><span>2024.04.03</span></li>
-                        <li><a href="#">서울 지하철 2호선 운행 시간 변경 안내</a><span>2024.04.06</span></li>
-                        <li><a href="#">서울 박물관 특별 전시회 개최</a><span>2024.04.12</span></li>
-                        <li><a href="#">서울 지하철 노선 추가 확정</a><span>2024.04.20</span></li>
-                    </ul>
-                </div>
-                <div class="gallery">
-                    <h3>서울 구석 갤러리</h3>
-                    <ul>
-                        <li>
-                            <a href="#">
-                                <img src="images/galley01.jpg" alt="한옥">
-                                <span>서울 한옥</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <img src="images/galley02.jpg" alt="한옥 정원">
-                                <span>한옥 정원</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <img src="images/galley03.jpg" alt="한옥">
-                                <span>서울 풍경</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </section>
-        </main>
-        <!-- main -->
-        <footer id="footer">
-            <div class="title">
-                <h1 class="logo">
-                    <a href="#">서울 구석구석</a>
-                </h1>
-            </div>
-            <div class="copy">
-                <p>COPYRIGHT 2024, ALL Rights Reserve</p>
-            </div>
-            <div class="family">
-                <select>
-                    <option value="1">서울 생태공원</option>
-                    <option value="2">서울 타워</option>
-                    <option value="3">서울 테마파크</option>
-                </select>
-            </div>
-        </footer>
-        <!-- footer -->
-
-        <div class="modal">
-            <h4>서울 둘레길 공사중</h4>
-            <p>안녕하세요. 서울 생태 공원입니다.
-                이번에 사고 예방을 위해 다시 정비를 하게 되어 아래 안내 기간동안의
-                통행이 불가 하게 되었습니다.
-                이용에 불편을 드려 죄송합니다.
-            </p>
-            <a href="#" class="popup_clpse">닫기</a>
-        </div>
-        <!-- //modal -->
-    
+li {
+    list-style: none;
+}
 ```
+
+* __a__ 선택자는 모든 링크(a 태그)에 적용됩니다. text-decoration: none은 링크 밑줄을 제거하고, color: #333로 링크 색상을 설정합니다.<br/>
+* __li__ 선택자는 모든 리스트 항목(li 태그)에 적용됩니다. list-style: none은 리스트 앞의 기본 마커(예: 원형 불릿)를 제거합니다.<br/>
+
+#### __레이아웃 스타일링__
+
+```css
+#wrap {
+    display: flex;
+    flex-wrap: wrap;
+}
+```
+
+* __#wrap은 ID 선택자로, id="wrap"인 요소에 적용__ 됩니다. __display: flex는 플렉스박스 레이아웃을 활성화__ 하고, __flex-wrap: wrap은 자식 요소들이 부모 요소의 너비를 넘어갈 경우 다음 줄로 넘어가게 합니다.__<br/>
+
+#### __기본구조 스타일링__
+
+```css
+#header {
+    width: 200px;
+    height: 650px;
+    background-color: #AA9FA6;
+}
+
+#main {
+    width: calc(100% - 200px);
+    height: 650px;
+    background-color: #626262;
+}
+
+#footer {
+    width: 100%;
+    height: 100px;
+    background-color: #ffdbdb;
+    display: flex;
+}
+```
+
+* #header, #main, #footer 선택자는 각각 헤더, 메인 콘텐츠, 푸터 영역을 대상으로 합니다.<br/>
+* __header__: 너비 200px, 높이 650px로 설정되고, 배경색을 설정했습니다.<br/>
+* __main__: 너비가 __header 영역을 제외한 나머지 영역을 차지하도록 calc(100% - 200px)로 설정__ 되었습니다. 실기에서는 (100% - 200px)가 지정되어 있다면 __calc__ 를 사용해야 합니다. 또한 main은 높이는 650px, 배경색은 어두운 회색(#626262)입니다.<br/>
+* __footer__: 너비가 전체 페이지를 차지하도록 100%, 높이는 100px로 설정했습니다.<br/>
+
+## __헤더 부분의 logo, nav 디자인하기__
+
+![header1](https://github.com/sunhew/sunhew.github.io/assets/161446039/9b38a073-c4c8-4d35-bd93-7627a5781602)
+![header2](https://github.com/sunhew/sunhew.github.io/assets/161446039/6228ede6-a1a9-4bb4-8526-c9565421de14)
+
+```css
+/* header */
+#header {
+    width: 200px;
+    background-color: #AA9FA6;
+}
+
+.logo {
+    height: 100px;
+    line-height: 100px;
+    text-align: center;
+    background-color: #e0dbde;
+}
+
+.logo a {
+    color: #fff;
+    font-size: 24px;
+}
+
+.nav {
+    height: 550px;
+    padding: 10px;
+}
+
+/* 메인 메뉴 */
+.nav>ul>li>a {
+    width: 100%;
+    padding: 10px;
+    display: inline-block;
+    text-align: center;
+    font-size: 18px;
+    margin-bottom: 5px;
+    color: #9ea1c7;
+    background-color: #ededed;
+}
+
+.nav>ul>li>a:hover {
+    background-color: #d9d9d9;
+}
+
+/* 서브 메뉴 */
+.nav>ul>li>ul {
+    margin-bottom: 10px;
+    display: none;
+}
+
+.nav>ul>li>ul>li {
+    margin-bottom: 2px;
+}
+
+.nav>ul>li>ul>li>a {
+    width: 100%;
+    padding: 10px;
+    display: inline-block;
+    text-align: center;
+    font-size: 18px;
+    color: #6e719c;
+    background-color: #dbdbdb;
+}
+
+.nav>ul>li>ul>li>a:hover {
+    background-color: #bfbebe;
+}
+```
+
+구조를 확인해보면 header에는 크게 logo와 nav가 존재하며 각각의 클래스들을 가지고 있습니다. 특히나 nav의 경우에는 __ul안에 다중의 li가 있고 그안에 a가 있는구조__ 이며 한번 더 들어가서는 __li안에 또 다른 ul이 있는구조__ 입니다. 이 경우에는 나중에 찾기 복잡하므로 반드시 주석으로 표시를 해두세요.<br/>
+
+### __코드 설명__
+
+#### __logo__
+
+```css
+.logo {
+    height: 100px;
+    line-height: 100px;
+    text-align: center;
+    background-color: #e0dbde;
+}
+
+.logo a {
+    color: #fff;
+    font-size: 24px;
+}
+```
+
+##### __logo__
+* __height__: 로고의 높이를 100px로 고정시킵니다.<br/>
+* __line-height__: 로고의 높이 위치를 100px로 설정해서 세로 중앙에 위치하게 합니다.<br/>
+* __text-align__: 세로 중앙에 있던 로고를 logo 영역의 중앙에 위치하게 합니다.<br/>
+* __background-color__: 배경색을 설정합니다.<br/>
+
+##### __logo a__
+* __color__: 글자의 색상을 설정합니다.<br/>
+* __font-size__: 글자의 크기를 설정하며 폰트마다의 크기는 제각각이니 정확한 수치는 아닙니다.<br/>
+
+#### __메인 내비게이션 (Nav) 스타일링__
+
+```css
+/* 메인 메뉴 */
+.nav>ul>li>a {
+    width: 100%;
+    padding: 10px;
+    display: inline-block;
+    text-align: center;
+    font-size: 18px;
+    margin-bottom: 5px;
+    color: #9ea1c7;
+    background-color: #ededed;
+}
+
+.nav>ul>li>a:hover {
+    background-color: #d9d9d9;
+}
+```
+
+##### __nav의 구조__
+html의 구조를 보면 nav의 자식으로는 ul이 있고 그안에 li가, li안에는 a와 또다른 ul이 있는 구조입니다. li의 안에 있는 ul은 서브 메뉴입니다. 또한 __"__&gt;__" 표식은 바로 아래에 있는 자식에게만 적용한다는 뜻__ 이라 다중으로 있을떄 사용하기에 유용합니다. __".nav&gt;ul"__ 부분이 없는 이유는 속성을 주지 않았기 때문에 삭제한것입니다. <br/>
+
+##### __nav &gt; ul &gt;li &gt; a__
+* __width: 100%__: a링크의 너비를 __부모 요소의 100%로 설정__ 하여, 전체 너비를 차지하게 합니다. 이는 메뉴 항목이 부모 컨테이너의 전체 너비를 사용하도록 합니다.<br/>
+* __padding: 10px__: __nav 내부의 상단, 하단, 좌우에 10픽셀의 패딩을 추가__ 합니다. 이 패딩은 링크의 클릭 가능 영역을 늘f립니다.<br/>
+* __display: inline-block__: a 링크를 __인라인 블록 요소__ 로 만듭니다. 이는 __요소가 텍스트처럼 한 줄에 나란히 배열되면서도 블록 요소처럼 너비와 높이를 가질 수 있게 합니다.__ 따라서, 링크가 전체 너비를 차지하면서도 패딩과 마진을 적용할 수 있습니다.<br/>
+* __text-align: center__:  __텍스트를 가운데 정렬__ 합니다. 메뉴 항목의 텍스트가 __링크 내에서 가운데 위치__ 하도록 합니다.<br/>
+* __font-size: 18px__: 글자의 크기를 설정하며 폰트마다의 크기는 제각각이니 정확한 수치는 아닙니다.<br/>
+* __margin-bottom: 5px__: a링크 아래에 __5픽셀의 마진을 추가__ 하여, 다음 메뉴 항목과의 거리를 만듭니다.<br/>
+* __color__: 글자의 색상을 지정합니다.<br/>
+* __background-color__: a링크의 영역만큼의 배경색을 지정합니다.<br/>
+
+##### __nav &gt; ul &gt;li &gt; a:hover__
+* __background-color__: a링크에 마우스를 올리면 색상이 변하게 합니다. 다음에 다룰 jqery에서도 마우스 오버(mouseover) 효과를 사용합니다.<br/>

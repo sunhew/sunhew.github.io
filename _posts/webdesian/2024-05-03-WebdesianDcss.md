@@ -22,16 +22,11 @@ html, css, script를 한곳에 포스팅 하기에는 너무나도 길어지면�
 * CSS <br/>
 * jqery <br/>
 
-## __폴더 링크 연결과 타이틀 적기__<br/>
-구조를 구성하기 이전에 실기에서는 index 와 css, script를 각각의 폴더에서 작성한 뒤 링크로 연결해야 하기에 css스타일부터 연결한뒤에 &lt;title&gt;에 제목을 적습니다.<br/>
+## __폴더 링크 연결확인하기와 언어 설정하기__<br/>
+다시 한번 style 링크가 index와 연결되었는지 확인 한 뒤에 가장 위에 사용할 언어부터 설정해줍니다. 아래 코드는 __CSS 파일이 UTF-8 문자 인코딩을 사용하여 작성되었음을 나타내는 선언__ 입니다. 이 선언은 __CSS 파일의 맨 처음 줄에 위치해야 하며, 다른 어떤 문자나 공백도 이 선언 앞에 오면 안 됩니다.__ UTF-8 인코딩은 국제적으로 가장 널리 사용되는 문자 인코딩 방식 중 하나로, 다양한 언어의 문자를 포함할 수 있으며, 웹 개발에서 표준적으로 사용됩니다. 이 선언을 사용함으로써 CSS 파일 내에서 다양한 언어의 문자를 정확하게 표현하고, 해석될 수 있도록 보장합니다.<br/>
 
-```html
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>서울 구석구석</title>
-    <link rel="stylesheet" href="css/style.css">
-</head>
+```css
+@charset "UTF-8";
 ```
 
 ## __기본적인 구조부터 잡기__
@@ -41,7 +36,7 @@ html, css, script를 한곳에 포스팅 하기에는 너무나도 길어지면�
 
 ![image 7](https://github.com/sunhew/sunhew.github.io/assets/161446039/a3fa16fe-5f38-45ab-9486-2da00e729d20)
 
-```html
+```css
 <div id="wrap">
         <header id="header">
           
@@ -73,7 +68,7 @@ html, css, script를 한곳에 포스팅 하기에는 너무나도 길어지면�
 
 ![image 8](https://github.com/sunhew/sunhew.github.io/assets/161446039/c453db1e-f844-4600-ae1b-7d8dec2b5be8)
 
-```html
+```css
 <div id="wrap">
         <header id="header">
             <h1 class="logo">
@@ -161,13 +156,13 @@ html, css, script를 한곳에 포스팅 하기에는 너무나도 길어지면�
 ```
 
 ## __서브 구조 잡기__
-여기까지 했다면 html 부분은 모두 끝났습니다. 세부 구조까지 작성하게 되면 구조는 한눈에 파악하기 어려워져 문제 부분을 찾기 힘들어질 수 있으니 반드시 주석을 사용해 정리 해주세요.<br/>
+여기까지 했다면 css 부분은 모두 끝났습니다. 세부 구조까지 작성하게 되면 구조는 한눈에 파악하기 어려워져 문제 부분을 찾기 힘들어질 수 있으니 반드시 주석을 사용해 정리 해주세요.<br/>
 
 슬라이드가 넘어가는 부분은 jqery로 작성할것이며 마우스 오버 할때의 색상 변경은 CSS, Ui가 나오는 부분은 jqery로 정리하겠습니다!<br/>
 
 ![image 9](https://github.com/sunhew/sunhew.github.io/assets/161446039/47e07150-2f5a-404f-8d55-172cafd828b1)
 
-```html
+```css
 
         <header id="header">
             <h1 class="logo">

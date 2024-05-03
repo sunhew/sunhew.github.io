@@ -293,3 +293,6 @@ html의 구조를 보면 nav의 자식으로는 ul이 있고 그안에 li가, li
 
 ##### __nav &gt; ul &gt;li &gt; a:hover__
 * __background-color__: a링크에 마우스를 올리면 색상이 변하게 합니다. 다음에 다룰 jqery에서도 마우스 오버(mouseover) 효과를 사용합니다.<br/>
+
+
+이상 CSS의 header이였습니다. 메인 부분은 이 포스팅의 두배 정도가 예상됩니다.

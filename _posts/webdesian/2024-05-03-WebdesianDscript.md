@@ -1,7 +1,7 @@
 ---
 layout: post
-title: 웹 디자인기능사 실기 D유형 html
-date: 2024-05-03 10:48 +0900
+title: 웹 디자인기능사 실기 D유형 script
+date: 2024-05-05 15:13 +0900
 description: 웹 디자인기능사 실기 D유형
 image: ../assets/img/webdesian.png
 category: 웹디자인기능사 실기
@@ -19,22 +19,17 @@ html, css, script를 한곳에 포스팅 하기에는 너무나도 길어지면�
 
 
 ### __웹디자인기능사 실기 D유형__
-* HTML ✔️ <br/>
+* HTML  <br/>
 * CSS <br/>
-* script(jqery) <br/>
+* script(jqery) ✔️<br/>
 
-## __폴더 링크 연결과 타이틀 적기__<br/>
+## __JQery 사용하기 위해 링크 연결하기__<br/>
 
 ```html
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>서울 구석구석</title>
-    <link rel="stylesheet" href="css/style.css">
-</head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 ```
 
-구조를 구성하기 이전에 실기에서는 index 와 css, script를 각각의 폴더에서 작성한 뒤 링크로 연결해야 하기에 css스타일부터 연결한뒤에 &lt;title&gt;에 제목을 적습니다.<br/>
+JQery를 사용하기 위해서는 우선적으로 &lt;script&gt; 위에 링크를 연결해야 합니다. 해당 링크는 https://developers.google.com/speed/libraries?hl=ko#jquery 에서 가져올 수 있습니다.<br/>
 
 ## __기본적인 구조부터 잡기__
 

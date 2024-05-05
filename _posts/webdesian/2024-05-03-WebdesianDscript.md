@@ -29,7 +29,7 @@ html, css, script를 한곳에 포스팅 하기에는 너무나도 길어지면�
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 ```
 
-JQery를 사용하기 위해서는 우선적으로 &lt;script&gt; 위에 링크를 연결해야 합니다. 해당 링크는 https://developers.google.com/speed/libraries?hl=ko#jquery 에서 가져올 수 있습니다.<br/>
+JQery를 사용하기 위해서는 우선적으로 &lt;script&gt; 위에 링크를 연결해야 합니다. 해당 링크는 <https://developers.google.com/speed/libraries?hl=ko#jquery> 에서 가져올 수 있습니다.<br/>
 
 ## __기본적인 구조부터 잡기__
 

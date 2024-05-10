@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 자바스크립트 웹디 메뉴 버튼만 공부하기
-date: 2024-05-10 04:00 +0900
+date: 2024-05-08 04:00 +0900
 description: 자바스크립트 웹디 메뉴 버튼
 image: ../assets/img/javascript.png
 category: 웹디 기능사 스크립트

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 웹 표준과 웬 접근성과 반응형 작업3
-date: 2024-05-14 16:00 +0900
+date: 2024-05-12 16:00 +0900
 description: html & css
 image: ../assets/img/html_css.png
 category: html & css

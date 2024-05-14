@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 웹 표준과 웬 접근성과 반응형 작업4
+title: CSS 우선순위, Position 속성
 date: 2024-05-14 16:00 +0900
 description: html & css
 image: ../assets/img/html_css.png
@@ -15,10 +15,10 @@ sitemap: true
 
 
 ## __HTML & CSS 목차__
-* 웹 표준, 웹 접근성 ✔️<br/>
-* 반응형 작업 ✔️<br/>
+* 웹 표준, 웹 접근성 <br/>
+* 반응형 작업 <br/>
 * 레거시 코드, IR 효과 시멘틱 태그<br/>
-* CSS 우선순위, Position 속성<br/>
+* CSS 우선순위, Position 속성✔️<br/>
 * block, inline-block, inline 차이<br/>
 * data 속성<br/>
 * seo, 최적화 방법, ID vs class 차이<br/>

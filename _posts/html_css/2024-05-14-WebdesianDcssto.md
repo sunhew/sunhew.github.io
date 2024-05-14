@@ -1,7 +1,7 @@
 ---
 layout: post
-title: 웹 표준과 웬 접근성과 반응형 작업2
-date: 2024-05-13 15:59 +0900
+title: 반응형 작업
+date: 2024-05-12 15:59 +0900
 description: html & css
 image: ../assets/img/html_css.png
 category: html & css
@@ -15,7 +15,7 @@ sitemap: true
 
 
 ## __HTML & CSS 목차__
-* 웹 표준, 웹 접근성 ✔️<br/>
+* 웹 표준, 웹 접근성 <br/>
 * 반응형 작업 ✔️<br/>
 * 레거시 코드, IR 효과 시멘틱 태그<br/>
 * CSS 우선순위, Position 속성<br/>

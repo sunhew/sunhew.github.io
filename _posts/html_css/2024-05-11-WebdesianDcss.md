@@ -5,7 +5,7 @@ date: 2024-05-11 22:51 +0900
 description: html & css
 image: ../assets/img/html_css.png
 category: html & css
-tags: html & css, 웹 표준, 웹 접근성, CSS 반응형 작업
+tags: html&css html css 웹표준 웹접근성
 published: true
 sitemap: true
 ---

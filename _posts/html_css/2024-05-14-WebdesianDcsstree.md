@@ -5,7 +5,7 @@ date: 2024-05-13 16:00 +0900
 description: html & css
 image: ../assets/img/html_css.png
 category: html & css
-tags: html & css, 웹 표준, 웹 접근성, CSS 반응형 작업
+tags: html&css html css 레거시코드 IR효과 시멘틱태그
 published: true
 sitemap: true
 ---

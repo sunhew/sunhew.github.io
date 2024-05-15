@@ -1,11 +1,11 @@
 ---
 layout: post
-title: CSS 우선순위, Position 속성
+title: block, inline-block, inline 차이
 date: 2024-05-15 19:24 +0900
 description: html & css
 image: ../assets/img/html_css.png
 category: html & css
-tags: html & css, 웹 표준, 웹 접근성, CSS 반응형 작업
+tags: html&css html css block inline-block inline차이
 published: true
 sitemap: true
 ---
@@ -45,7 +45,7 @@ sitemap: true
 
 #### __주요 블록 요소__
 
-``html
+```html
 <div></div>
 <p></p>
 <h1></h1>
@@ -73,25 +73,27 @@ CSS에서 `display` __속성을 사용하여 요소의 디스플레이 유형을
 #### __차지하는 공간__
 * 블록 요소는 부모 요소의 전체 너비를 차지합니다. 예를 들어, `<div>`는 __기본적으로 부모의 전체 너비__ 를 가집니다.
 
-#### __차지하는 공간__
-* 블록 요소는 부모 요소의 전체 너비를 차지합니다. 예를 들어, `<div>`는 __기본적으로 부모의 전체 너비__ 를 가집니다.
+#### __크기 조정__
+* `width` 와 `height` 속성을 사용하여 블록 요소의 크기를 조정할 수 있습니다.
+* __기본적으로 너비는 100%__ 이며, `width` 속성을 통해 이를 조정할 수 있습니다.
+* `width: 50%` 로 설정하면 __부모 요소 너비의 50%를 차지__ 합니다.
+
+#### __패딩, 마진 및 경계__
+* 블록 요소는 __패딩, 마진, 경계(border)와 같은 박스 모델 속성을 적용__ 할 수 있습니다. 이러한 속성은 __요소의 레이아웃과 공간 배치를 관리__ 하는 데 사용됩니다.
 
 ```css
-/* 특정성: 0,0,1,1 */
-div.class {
-    color: red;
-}
-
-/* 특정성: 0,1,0,0 */
-#id {
-    color: blue;
-}
-
-/* 특정성: 0,0,2,0 */
-.class1.class2 {
-    color: green;
+.block-element {
+    display: block;
+    width: 50%;
+    padding: 10px;
+    margin: 20px auto;
+    border: 1px solid #000;
 }
 ```
+
+#### __내부 요소 배치__
+* 블록 요소는 __내부에 포함된 다른 블록 요소와 인라인 요소를 정렬하고 배치__ 합니다.
+* __블록 요소 안에 포함된 요소들은 순서대로 쌓입니다__(위에서 아래로).
 
 ### __우선순위 예제__
 

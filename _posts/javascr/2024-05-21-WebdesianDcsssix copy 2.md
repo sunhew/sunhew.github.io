@@ -1,11 +1,11 @@
 ---
 layout: post
-title: data 속성
-date: 2024-05-16 21:32 +0900
+title: block, inline-block, inline 차이
+date: 2024-05-15 19:24 +0900
 description: html & css
 image: ../assets/img/html_css.png
 category: html & css
-tags: html&css html css data속성 data
+tags: html&css html css block inline-block inline차이
 published: true
 sitemap: true
 ---
@@ -19,8 +19,8 @@ sitemap: true
 * 반응형 작업 <br/>
 * 레거시 코드, IR 효과 시멘틱 태그<br/>
 * CSS 우선순위, Position 속성<br/>
-* block, inline-block, inline 차이 <br/>
-* data 속성 ✔️<br/>
+* block, inline-block, inline 차이 ✔️<br/>
+* data 속성<br/>
 * seo, 최적화 방법, ID vs class 차이<br/>
 
 <br/>

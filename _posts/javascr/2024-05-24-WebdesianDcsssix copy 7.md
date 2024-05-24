@@ -5,13 +5,13 @@ date: 2024-05-24 18:21 +0900
 description: JAVASCRIPT
 image: ../assets/img/javascript.png
 category: JAVASCRIPT
-tags: JAVASCRIPT Hoisting 호이스팅 변수 var let const
+tags: JAVASCRIPT Hoisting 호이스팅 변수 var let const 함수 함수호이스팅 클래스호이스팅
 published: true
 sitemap: true
 ---
 
 # JAVASCRIPT
-해당 포스팅에서는 호이스팅(Hoisting)에 대해 다룹니다.<br />
+해당 포스팅에서는 호이스팅(Hoisting) 변수중 하나인 var에 대해 다룹니다.<br />
 
 
 ## __JAVASCRIPT__

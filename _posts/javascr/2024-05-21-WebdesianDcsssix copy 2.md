@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 자바스크립트 장단점
-date: 2024-05-17 19:24 +0900
+date: 2024-05-18 19:24 +0900
 description: html & css
 image: ../assets/img/html_css.png
 category: html & css

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: block, inline-block, inline 차이
-date: 2024-05-16 21:32 +0900
+date: 2024-05-17 21:32 +0900
 description: html & css
 image: ../assets/img/html_css.png
 category: html & css

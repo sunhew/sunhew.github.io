@@ -3,7 +3,7 @@ layout: post
 title: 웹 디자인기능사 실기 D유형 script
 date: 2024-05-07 15:13 +0900
 description: 웹 디자인기능사 실기 D유형
-image: ../assets/img/javascript.png
+image: ../assets/img/webdesian.png
 category: 웹디자인기능사 실기
 tags: 웹디자인기능사 실기 D유형
 published: true

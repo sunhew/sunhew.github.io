@@ -3,7 +3,7 @@ layout: post
 title: var, let, const 차이
 date: 2024-05-23 09:53 +0900
 description: JAVASCRIPT
-image: ../assets/img/html_css.png
+image: ../assets/img/javascript.png
 category: JAVASCRIPT
 tags: JAVASCRIPT html var let const 차이
 published: true

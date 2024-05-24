@@ -3,7 +3,7 @@ layout: post
 title: 자바스크립트 장단점
 date: 2024-05-18 19:24 +0900
 description: JAVASCRIPT
-image: ../assets/img/html_css.png
+image: ../assets/img/javascript.png
 category: JAVASCRIPT
 tags: JAVASCRIPT 자바스크립트장단점
 published: true

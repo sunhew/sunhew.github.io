@@ -3,7 +3,7 @@ layout: post
 title: 불변성을 유지하려면 어떻게..
 date: 2024-05-21 18:24 +0900
 description: JAVASCRIPT
-image: ../assets/img/html_css.png
+image: ../assets/img/javascript.png
 category: JAVASCRIPT
 tags: JAVASCRIPT html 불변성을유지 불변성 불변성유지방법
 published: true

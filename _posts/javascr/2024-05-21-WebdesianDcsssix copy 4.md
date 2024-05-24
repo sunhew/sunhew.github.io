@@ -3,7 +3,7 @@ layout: post
 title: 데이터 형 변환
 date: 2024-05-19 19:24 +0900
 description: JAVASCRIPT
-image: ../assets/img/html_css.png
+image: ../assets/img/javascript.png
 category: JAVASCRIPT
 tags: html&css html css 데이터형변환 데이터
 published: true

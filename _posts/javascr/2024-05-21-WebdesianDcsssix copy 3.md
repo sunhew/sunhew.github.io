@@ -3,7 +3,7 @@ layout: post
 title: 데이터 타입
 date: 2024-05-20 19:24 +0900
 description: JAVASCRIPT
-image: ../assets/img/html_css.png
+image: ../assets/img/javascript.png
 category: JAVASCRIPT
 tags: JAVASCRIPT 데이터타입 데이터
 published: true

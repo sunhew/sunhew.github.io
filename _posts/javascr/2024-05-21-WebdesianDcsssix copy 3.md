@@ -2,21 +2,21 @@
 layout: post
 title: 데이터 타입
 date: 2024-05-20 19:24 +0900
-description: html & css
+description: JAVASCRIPT
 image: ../assets/img/html_css.png
-category: html & css
-tags: html&css html css block inline-block inline차이
+category: JAVASCRIPT
+tags: JAVASCRIPT 데이터타입 데이터
 published: true
 sitemap: true
 ---
 
 # JAVASCRIPT
-해당 포스팅에서는 block, inline-block, inline 차이에 대해 다룹니다. 꽤 많이 길기에 오른쪽에 있는 목차를 활용해 주세요.<br />
+해당 포스팅에서는 데이터 타입에 대해 다룹니다. 꽤 많이 길기에 오른쪽에 있는 목차를 활용해 주세요.<br />
 
 
 ## __JAVASCRIPT__
-* 자바스크립트 장단점 ✔️<br/>
-* 데이터 타입 <br/>
+* 자바스크립트 장단점 <br/>
+* 데이터 타입 ✔️<br/>
 * 데이터 형 변환<br/>
 * 불변성을 유지하려면 어떻게..<br/>
 * 프로토타입 <br/>
@@ -45,343 +45,199 @@ sitemap: true
 * 얕은 복사 / 깊은 복사<br/>
 * 동기 / 비동기<br/>
 
-## __Block__<br/>
+## __데이터 타입__<br/>
 
-### __Block_의 개념__
-"__Block__"은 __HTML과 CSS에서 주로 사용되는 용어__ 로, 두 가지 주요 개념을 설명합니다. __HTML 요소의 디스플레이 속성과 그로 인해 발생하는 레이아웃 동작__ 입니다. 블록 요소는 __웹 페이지의 구조를 정의__ 하고, CSS를 통해 __레이아웃과 스타일을 조정__ 하는 데 중요한 역할을 합니다.
+### __데이터 타입의 설명__
+자바스크립트는 동적이고 약한 타입의 언어로, 변수의 타입을 명시하지 않고도 사용할 수 있습니다. 자바스크립트의 데이터 타입은 크게 기본 타입(원시 타입)과 객체 타입으로 나뉩니다. 아래는 각 데이터 타입에 대한 자세한 설명입니다.
 
-### __HTML 블록 요소__
+### __기본 타입 (Primitive Types)__
+기본 타입은 단일 값만을 가지며, 변경 불가능(immutable)합니다.
 
-#### __항상 새로운 줄에서 시작__
+#### __숫자 (Number)__
+숫자 타입은 정수와 실수를 포함합니다. 자바스크립트에서는 모든 숫자가 64비트 부동소수점 형식 (IEEE 754)으로 저장됩니다.
 
-* 블록 요소는 __다른 콘텐츠와 구분__ 되어 __항상 새로운 줄에서 시작__ 합니다.<br/>
-* 블록 __요소 하나가 끝나면 다음 블록 요소는 새로운 줄에서 시작__ 합니다.<br/>
-
-#### __전체 너비를 차지__
-
-* 블록 요소는 기본적으로 __부모 요소의 전체 너비를 차지__ 합니다. 이로 인해 __같은 줄에 다른 블록 요소가 있을 수 없습니다.__<br/>
-
-#### __내부에 다른 블록 및 인라인 요소를 포함할 수 있음__
-
-* 블록 요소는 __다른 블록 요소와 인라인 요소를 포함__ 할 수 있습니다.<br/>
-
-#### __주요 블록 요소__
-
-```html
-<div></div>
-<p></p>
-<h1></h1>
-<ul></ul>
-<ol></ol>
-<li></li>
-<section></section>
-<article></article>
-<nav></nav>
-<footer></footer>
+```javascript
+let integer = 42;         // 정수
+let float = 3.14;         // 실수
+let negative = -7;        // 음수
+let exponential = 1.23e4; // 지수 표기법
+let notANumber = NaN;     // 숫자가 아님(Not-a-Number)
+let infinity = Infinity;  // 무한대
+let negativeInfinity = -Infinity; // 음의 무한대
 ```
 
-### __CSS 디스플레이 속성__
+#### __문자열 (String)__
+문자열 타입은 텍스트 데이터를 표현합니다. 문자열은 작은따옴표(''), 큰따옴표(""), 또는 백틱(``)으로 감쌀 수 있습니다.
 
-CSS에서 `display` __속성을 사용하여 요소의 디스플레이 유형을 지정__ 할 수 있습니다. `display: block` 은 __요소를 블록 레벨로 지정__ 합니다.
+```javascript
+let singleQuote = 'Hello, world!';
+let doubleQuote = "Hello, world!";
+let templateLiteral = `Hello, ${name}!`; // 템플릿 리터럴
+```
 
-```css
-.block-element {
-    display: block;
+#### __불리언 (Boolean)__
+불리언 타입은 논리 값을 나타내며, true와 false 두 가지 값만 가질 수 있습니다.
+
+```javascript
+let isTrue = true;
+let isFalse = false;
+```
+
+#### __null__
+`null` 은 의도적으로 값이 없음을 나타내는 타입입니다.
+
+```javascript
+let emptyValue = null;
+```
+
+#### __undefined__
+`undefined` 는 값이 할당되지 않은 변수를 나타냅니다. 변수를 선언하고 초기화하지 않으면 기본적으로 `undefined` 값을 가집니다.
+
+```javascript
+let notAssigned;
+console.log(notAssigned); // undefined
+```
+
+#### __심볼 (Symbol)__
+ES6에서 도입된 심볼 타입은 유일무이한 식별자를 생성하는 데 사용됩니다. 주로 객체의 프로퍼티 키로 사용됩니다.
+
+```javascript
+let symbol1 = Symbol();
+let symbol2 = Symbol('description');
+```
+
+### __객체 타입 (Object Types)__
+객체 타입은 여러 값을 포함할 수 있는 복합 자료형입니다. 객체는 키-값 쌍의 집합입니다.
+
+#### __객체 (Object)__
+객체는 키-값 쌍을 포함하는 컨테이너입니다. 키는 문자열이나 심볼이고, 값은 어떤 타입도 가능합니다
+
+```javascript
+let person = {
+    name: 'John',
+    age: 30,
+    greet: function() {
+        console.log('Hello!');
+    }
+};
+
+console.log(person.name); // 'John'
+person.greet();           // 'Hello!'
+```
+
+#### __배열 (Array)__
+배열은 순서가 있는 값의 리스트입니다. 배열의 요소는 어떤 타입도 될 수 있습니다.
+
+```javascript
+let numbers = [1, 2, 3, 4, 5];
+let mixedArray = [1, 'two', true, null, undefined, {key: 'value'}, [1, 2, 3]];
+
+console.log(numbers[0]); // 1
+console.log(mixedArray[5]); // {key: 'value'}
+```
+
+#### __함수 (Function)__
+함수는 특정 작업을 수행하는 코드 블록입니다. 함수도 객체의 일종입니다.
+
+```javascript
+function greet(name) {
+    return `Hello, ${name}!`;
 }
+
+let add = function(a, b) {
+    return a + b;
+};
+
+console.log(greet('Alice')); // 'Hello, Alice!'
+console.log(add(2, 3));      // 5
 ```
 
-### __블록 요소의 레이아웃 특성__
+#### __날짜 (Date)__
+`Date` 객체는 날짜와 시간을 나타냅니다.
 
-#### __차지하는 공간__
-* 블록 요소는 부모 요소의 전체 너비를 차지합니다. 예를 들어, `<div>`는 __기본적으로 부모의 전체 너비__ 를 가집니다.
-
-#### __크기 조정__
-* `width` 와 `height` 속성을 사용하여 블록 요소의 크기를 조정할 수 있습니다.
-* __기본적으로 너비는 100%__ 이며, `width` 속성을 통해 이를 조정할 수 있습니다.
-* `width: 50%` 로 설정하면 __부모 요소 너비의 50%를 차지__ 합니다.
-
-#### __패딩, 마진 및 경계__
-* 블록 요소는 __패딩, 마진, 경계(border)와 같은 박스 모델 속성을 적용__ 할 수 있습니다. 이러한 속성은 __요소의 레이아웃과 공간 배치를 관리__ 하는 데 사용됩니다.
-
-```css
-.block-element {
-    display: block;
-    width: 50%;
-    padding: 10px;
-    margin: 20px auto;
-    border: 1px solid #000;
-}
+```javascript
+let now = new Date();
+console.log(now); // 현재 날짜와 시간
 ```
 
-#### __내부 요소 배치__
-* 블록 요소는 __내부에 포함된 다른 블록 요소와 인라인 요소를 정렬하고 배치__ 합니다.
-* __블록 요소 안에 포함된 요소들은 순서대로 쌓입니다__(위에서 아래로).
+#### __정규 표현식 (RegExp)__
+`RegExp` 객체는 정규 표현식을 나타내며, 문자열 패턴 매칭에 사용됩니다.
 
-<br/>
+```javascript
+let pattern = /hello/;
+let text = 'Hello, world!';
 
-### __인라인 요소와의 차이점__
-
-#### __인라인 요소__
-* 인라인 요소는 __콘텐츠의 흐름을 유지__ 하며, __주변의 다른 콘텐츠와 같은 줄에 배치__ 됩니다.
-* 주로 텍스트와 관련된 요소들이 인라인 요소입니다. 예를 들면 `<span>` , `<a>` , `<strong>` , `<em>` 이 있습니다.
-
-#### __블록 요소__
-* 블록 요소는 __항상 새로운 줄에서 시작__ 하며, __전체 너비를 차지__ 합니다. 주로 __구조적인 요소__ 들이 __블록 요소__ 입니다. 예를 들면 `<div>` , `<p>` , `<h1>` 이 있습니다.
-
-<br/>
-
-### __블록 요소 예시 코드__
-
-```html
-<!DOCTYPE html>
-<html lang="ko">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Block Element Example</title>
-    <style>
-        .container {
-            width: 80%;
-            margin: 0 auto;
-            border: 1px solid #ccc;
-            padding: 20px;
-        }
-
-        .block-element {
-            display: block;
-            width: 100%;
-            margin-bottom: 20px;
-            padding: 10px;
-            border: 1px solid #000;
-        }
-    </style>
-</head>
-
-<body>
-    <div class="container">
-        <div class="block-element">Block Element 1</div>
-        <div class="block-element">Block Element 2</div>
-        <div class="block-element">Block Element 3</div>
-    </div>
-</body>
-
-</html>
+console.log(pattern.test(text)); // false (대소문자 구분)
+console.log(/hello/i.test(text)); // true (대소문자 무시)
 ```
 
-위의 예시예서 `.block-element` 클래스는 `display: block` 속성을 사용하여 __블록 요소로 지정__ 되었습니다. 각 __블록 요소는 부모 컨테이너의 전체 너비를 차지__ 하며, __아래로 쌓입니다.__
+#### __맵 (Map)과 셋 (Set)__
+`Map` 은 키-값 쌍의 집합을 나타내며, `Set` 은 중복되지 않는 값의 집합을 나타냅니다. 이들은 ES6에서 도입되었습니다.
 
-<br/>
+```javascript
+let map = new Map();
+map.set('key1', 'value1');
+map.set('key2', 'value2');
 
-## __inline-block__<br/>
+console.log(map.get('key1')); // 'value1'
 
-### __inline-block의 개념__
-`inline-block` 은 CSS에서 요소의 `display` __속성을 지정할 때 사용하는 값 중 하나로, 인라인 요소와 블록 요소의 특성을 모두 가집니다.__ 이를 통해 __요소를 블록처럼 취급하면서도 인라인 요소처럼 같은 줄에 배치__ 할 수 있습니다.
+let set = new Set();
+set.add(1);
+set.add(2);
+set.add(1); // 중복된 값은 추가되지 않음
 
-### __주요 특성__
-
-#### __같은 줄에 배치__
-
-* `inline-block` 요소는 __인라인 요소처럼 같은 줄에 배치__ 됩니다. 이는 여러 `inline-block` 요소들이 __한 줄에 나란히 배치될 수 있음을 의미__ 합니다.
-
-#### __블록 요소처럼 크기 조절 가능__
-
-* `inline-block` 요소는 블록 요소처럼 `width` 와 `height` 속성을 사용할 수 있으며, __블록 요소처럼 패딩(padding), 마진(margin), 경계(border) 등의 박스 모델 속성을 적용__ 할 수 있습니다.
-
-#### __인라인 요소와의 차이__
-
-* __인라인 요소__ 는 `width` 와 `height` __속성을 무시__ 하지만, `inline-block` __요소는 이를 존중__ 합니다. 또한 __인라인 요소는 주로 텍스트 콘텐츠와 함께 사용__ 되며, __블록 요소는 구조적인 레이아웃을 구성__ 합니다.
-
-#### __inline-block 사용예시__
-
-```html
-<!DOCTYPE html>
-<html lang="ko">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inline-Block Example</title>
-    <style>
-        .inline-block-element {
-            display: inline-block;
-            width: 100px;
-            height: 100px;
-            margin: 10px;
-            padding: 10px;
-            border: 1px solid #000;
-            background-color: lightblue;
-            vertical-align: top;
-        }
-    </style>
-</head>
-
-<body>
-    <div class="inline-block-element">Box 1</div>
-    <div class="inline-block-element">Box 2</div>
-    <div class="inline-block-element">Box 3</div>
-</body>
-
-</html>
+console.log(set.has(1)); // true
+console.log(set.size);   // 2
 ```
 
-위의 예제에서 `.inline-block-element` 클래스는 `display: inline-block` 속성을 사용합니다. __이 속성 덕분에 요소들이 같은 줄에 나란히 배치되며, 각 요소는 지정된 너비와 높이__ 를 가집니다.
+#### __약한 맵 (WeakMap)과 약한 셋 (WeakSet)__
+`WeakMap` 과 `WeakSet` 은 가비지 컬렉션을 지원하는 자료 구조로, 키로 사용된 객체가 더 이상 참조되지 않을 때 자동으로 제거됩니다.
 
-### __주요 속성 설명__
+```javascript
+let weakMap = new WeakMap();
+let obj = {};
+weakMap.set(obj, 'value');
 
-#### __width와 height__
-* `inline-block` 요소는 __블록 요소처럼 너비와 높이를 지정__ 할 수 있습니다.
+console.log(weakMap.get(obj)); // 'value'
 
-#### __padding, margin, border__
-* 모든 박스 모델 속성이 적용됩니다.
+let weakSet = new WeakSet();
+let obj2 = {};
+weakSet.add(obj2);
 
-#### __수직 정렬(vertical-align)__
-* 인라인 요소와 마찬가지로 __수직 정렬을 조정__ 할 수 있습니다.
-* 기본값은 `baseline` 이지만, `top` , `middle` , `bottom` 등 __다양한 값을 사용__ 할 수 있습니다.
-* 예를 들어, 위의 예제에서 `vertical-align: top` 을 __사용하여 요소들이 상단에 정렬__ 되도록 했습니다.
-
-### __인라인 요소와 블록 요소와의 비교__
-
-|특성|inline 요소|block 요소|inline-block 요소|
-|---|---|---|---|
-|줄 바꿈|같은 줄|항상 새로운 줄에서 시작|같은 줄|
-|크기 속성|무시 ( `width` , `height` 적용 불가)|적용 가능|적용 가능|
-|박스 모델 속성|일부 적용 가능 ( `padding` , `margin` 중 좌우만)|적용 가능|적용 가능|
-|수직 정렬| `vertical-align` 가능|불가능| `vertical-align` 가능|
-
-### __활용 사례__
-`inline-block` 은 다양한 __레이아웃을 구성하는 데 유용__ 합니다. 특히 다음과 같은 경우에 많이 사용됩니다
-
-#### __네비게이션 바__
-* 메뉴 항목들을 __나란히 배치할 떄 유용__ 합니다.
-
-#### __이미지 갤러리__
-* 이미지나 썸네일을 __나란히 배치하여 갤러리를 구성할 때 사용__ 됩니다.
-
-#### __카드 레이아웃__
-* 카드형 레이아웃을 만들 때 각 카드를 `inline-block` 으로 설정하면, __카드를 한 줄에 여러 개 배치__ 할 수 있습니다.
-
-#### __폼 요소__
-* 폼의 __입력 요소들을 한 줄에 배치할 때 사용__ 됩니다.
-
-### __주의 사항__
-
-#### __화이트 스페이스 문제__
-* HTML 코드에서 `inline-block` __요소들 사이에 공백이 있으면 그 공백이 요소들 사이에 간격으로 적용__ 됩니다. 이를 해결하기 위한 몇 가지 방법은 다음과 같습니다
-
-    * 요소들 사이의 공백을 제거하거나 HTML 태그를 붙여 씁니다.
-    * 부모 요소의 `font-size` 를 __0으로 설정__ 하고, 각 요소에 필요한 `font-size` 를 __개별적으로 지정__ 합니다.
-    * CSS 그리드 또는 __플렉스 박스 레이아웃을 고려__ 할 수도 있습니다.
-
-#### __브라우저 호환성__
-대부분의 최신 브라우저는 `inline-block` 을 잘 지원하지만, 오__래된 브라우저에서는 일부 문제__ 가 있을 수 있습니다. __최신 CSS 레이아웃 기술과의 호환성을 확인__ 해야 합니다.
-
-<br/>
-
-## __inline__<br/>
-
-### __inline의 개념__
-`inline-block` 은 CSS에서 요소의 `display` __속성을 지정할 때 사용하는 값 중 하나로, 인라인 요소__ 를 나타냅니다. __인라인 요소는 블록 요소와 달리 같은 줄에 다른 요소들과 함께 배치__ 되며, 주로 텍스트와 관련된 __작은 요소들에 사용__ 됩니다.
-
-### __주요 특성__
-
-#### __같은 줄에 배치__
-
-* 인라인 요소는 다른 인라인 요소들과 __함께 같은 줄에 배치__ 됩니다. 요소의 크기는 그 내용에 따라 결정됩니다.
-
-#### __크기 조절 제한__
-
-* `width` 와 `height` 속성을 사용할 수 없습니다. 인라인 요소의 크기는 주로 그 내용에 의해 결정됩니다.
-
-#### __박스 모델 속성 제한__
-
-* `padding` 과 `margin` 속성은 사용할 수 있지만, __상하 패딩과 마진은 요소의 레이아웃에 영향을 미치지 않습니다.__ 또한 경계(border) 속성은 적용할 수 있지만, 요소의 레이아웃을 변경하지 않습니다.
-
-#### __주요 인라인 요소__
-HTML에서 자주 사용되는 인라인 요소는 다음과 같습니다.
-
-|코드|설명|
-|---|---|
-| `<a>` |하이퍼링크를 정의|
-| `<span>` |일반 텍스트를 그룹화|
-| `<strong>` |중요 텍스트를 강조|
-| `<em>` |텍스트를 이탤릭체로 강조|
-| `<img>` |이미지를 삽입|
-| `<code>` |코드 조각을 나타냄|
-| `<br>` |줄 바꿈을 삽입|
-| `<label>` |폼 요소에 대한 라벨을 정의|
-
-### __사용 예시__
-
-```html
-<!DOCTYPE html>
-<html lang="ko">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inline Elements Example</title>
-    <style>
-        .inline-element {
-            color: red;
-            border: 1px solid black;
-            padding: 5px;
-            margin: 10px;
-        }
-    </style>
-</head>
-
-<body>
-    <p>This is a <span class="inline-element">span element</span> within a paragraph.</p>
-    <p>Here is an <a href="#" class="inline-element">anchor element</a> in another paragraph.</p>
-</body>
-
-</html>
-```
-위의 예제에서 `.inline-element` 클래스는 `span` 과 `a` __요소에 적용__ 됩니다. 이들은 __모두 인라인 요소이기 때문에 다른 텍스트와 같은 줄에 배치__ 됩니다.
-
-### __주요 속성 설명__
-
-```css
-.inline-element {
-    display: inline;
-    padding: 10px;  /* 좌우 패딩만 레이아웃에 영향을 줌 */
-    margin: 10px;  /* 좌우 마진만 레이아웃에 영향을 줌 */
-    border: 1px solid #000; /* 경계는 요소 주위에 나타남 */
-}
+console.log(weakSet.has(obj2)); // true
 ```
 
-#### __display: inline__
-* 인라인 요소를 지정하는 기본 `display` 값입니다.
+### __타입 확인__
+자바스크립트에서 데이터 타입을 확인하는 방법에는 여러 가지가 있습니다.
 
-#### __width와 height__
-* 인라인 요소는 `width` 와 `height` __속성을 무시__ 합니다. 대신, __요소의 크기는 그 내용에 따라 결정__ 됩니다.
+#### __typeof 연산자__
+원시 타입과 객체 타입을 구분하는 데 사용됩니다.
 
-#### __박스 모델 속성__
-* 인라인 요소에 `padding` 과 `margin `을 적용할 수 있지만, __상하 패딩과 마진은 요소의 레이아웃에 영향을 미치지 않습니다.__
-* __`border` 속성은 요소 주위에 경계를 그릴 수 있지만, 상하 경계는 요소의 크기를 변경하지 않습니다.__
+```javascript
+console.log(typeof 123);         // 'number'
+console.log(typeof 'hello');     // 'string'
+console.log(typeof true);        // 'boolean'
+console.log(typeof undefined);   // 'undefined'
+console.log(typeof null);        // 'object' (자바스크립트의 오래된 버그)
+console.log(typeof Symbol());    // 'symbol'
+console.log(typeof {});          // 'object'
+console.log(typeof []);          // 'object'
+console.log(typeof function(){}); // 'function'
+```
 
-### __인라인 요소와 블록 요소 비교__
+#### __instanceof 연산자__
+객체가 특정 생성자 함수의 인스턴스인지 확인하는 데 사용됩니다.
 
-|특성|inline 요소|block 요소|
-|---|---|---|
-|줄 바꿈|같은 줄에 다른 요소들과 함께 배치|항상 새로운 줄에서 시작|
-|크기 속성|무시 ( `width` `height` 적용 불가)|적용 가능|
-|박스 모델 속성|일부 적용 가능 ( `padding` `margin` 중 좌우만)|적용 가능|
-|수직 정렬| `vertical-align` 가능|불가능|
-|콘텐츠의 영향|요소의 내용에 따라 크기 결정|부모 요소의 전체 너비를 차지|
+```javascript
+console.log([] instanceof Array);    // true
+console.log({} instanceof Object);   // true
+console.log(function(){} instanceof Function); // true
+```
 
-### __활용 사례__
-인라인 요소는 주로 텍스트와 관련된 작업에서 유용합니다. 다음은 인라인 요고가 주로 사용되는 몇 가지 상황입니다.
+#### __Array.isArray() 메서드__
+값이 배열인지 확인하는 데 사용됩니다.
 
-#### __텍스트 강조__
-* __특정 단어나 문장을 강조__ 하기 위해 `<strong>` , `<em>` 과 같은 요소를 사용합니다.
-
-#### __링크__
-* __텍스트나 이미지를 링크로 만들기 위해 `<a>` 요소를 사용합니다.__
-
-#### __텍스트와 이미지 혼합__
-* __텍스트와 함께 이미지를 배치할 때__ `<img>` 요소를 사용합니다.
-
-#### __폼 레이블__
-* __폼 요소와 관련된 텍스트를 설명__ 하기 위해 `<label>` 요소를 사용합니다.
+```javascript
+console.log(Array.isArray([])); // true
+console.log(Array.isArray({})); // false
+```

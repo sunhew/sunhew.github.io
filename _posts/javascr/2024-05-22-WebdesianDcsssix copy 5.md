@@ -1,6 +1,6 @@
 ---
 layout: post
-title: block, inline-block, inline 차이
+title: 프로토타입
 date: 2024-05-22 19:24 +0900
 description: html & css
 image: ../assets/img/html_css.png

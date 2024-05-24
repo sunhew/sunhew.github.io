@@ -1,6 +1,6 @@
 ---
 layout: post
-title: block, inline-block, inline 차이
+title: var, let, const 차이
 date: 2024-05-23 09:53 +0900
 description: html & css
 image: ../assets/img/html_css.png

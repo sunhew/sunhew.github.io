@@ -1,6 +1,6 @@
 ---
 layout: post
-title: block, inline-block, inline 차이
+title: 데이터 형 변환
 date: 2024-05-19 19:24 +0900
 description: html & css
 image: ../assets/img/html_css.png

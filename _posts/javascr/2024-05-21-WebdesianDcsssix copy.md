@@ -10,20 +10,40 @@ published: true
 sitemap: true
 ---
 
-# HTML & CSS
+# JAVASCRIPT
 해당 포스팅에서는 block, inline-block, inline 차이에 대해 다룹니다. 꽤 많이 길기에 오른쪽에 있는 목차를 활용해 주세요.<br />
 
 
-## __HTML & CSS 목차__
-* 웹 표준, 웹 접근성 <br/>
-* 반응형 작업 <br/>
-* 레거시 코드, IR 효과 시멘틱 태그<br/>
-* CSS 우선순위, Position 속성<br/>
-* block, inline-block, inline 차이 ✔️<br/>
-* data 속성<br/>
-* seo, 최적화 방법, ID vs class 차이<br/>
-
-<br/>
+## __JAVASCRIPT__
+* 자바스크립트 장단점 ✔️<br/>
+* 데이터 타입 <br/>
+* 데이터 형 변환<br/>
+* 불변성을 유지하려면 어떻게..<br/>
+* 프로토타입 <br/>
+* var, let, const 차이<br/>
+* 호이스팅(Hoisting)<br/>
+* es6 문법 특징과 차이<br/>
+* this<br/>
+* 제이쿼리 메서드 중 attr(), prop() 차이<br/>
+* 화살표 함수와 일반 함수 차이<br/>
+* 스코프(scope)<br/>
+* 객체 지향<br/>
+* 클로저(closure)<br/>
+* 타입스크립트<br/>
+* 프로세스<br/>
+* 스레드, 싱글 스레드<br/>
+* 콜백 함수 / 재귀 함수 차이<br/>
+* 콜백 지옥, 콜백 지옥을 해결하는 방법<br/>
+* promise / 콜백 지옥<br/>
+* ajax<br/>
+* 함수 선언식/ 표현식 차이<br/>
+* 이벤트 버블링 / 이벤트 캡처 예시<br/>
+* 이벤트 위임 (Event Delegation)<br/>
+* 렉시컬 환경<br/>
+* 프로퍼티<br/>
+* stack이 코드 실행할 때 queue에 미뤄두는 것<br/>
+* 얕은 복사 / 깊은 복사<br/>
+* 동기 / 비동기<br/>
 
 ## __Block__<br/>
 

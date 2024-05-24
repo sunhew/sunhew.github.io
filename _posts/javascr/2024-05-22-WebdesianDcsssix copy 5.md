@@ -11,7 +11,7 @@ sitemap: true
 ---
 
 # JAVASCRIPT
-해당 포스팅에서는 block, inline-block, inline 차이에 대해 다룹니다. 꽤 많이 길기에 오른쪽에 있는 목차를 활용해 주세요.<br />
+해당 포스팅에서는 프로토타입에 대해 다룹니다. 꽤 많이 길기에 오른쪽에 있는 목차를 활용해 주세요.<br />
 
 
 ## __JAVASCRIPT__

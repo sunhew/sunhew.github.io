@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Hoisting의 함수 호이스팅
+title: Hoisting의 클래스 호이스팅
 date: 2024-05-27 09:29 +0900
 description: JAVASCRIPT
 image: ../assets/img/javascript.png

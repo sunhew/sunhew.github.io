@@ -1,7 +1,7 @@
 ---
 layout: post
 title: CSS 우선순위, Position 속성
-date: 2024-06-05 16:00 +0900
+date: 2024-06-03 16:00 +0900
 description: html & css
 image: ../assets/img/htmlcss03.jpg
 category: html & css

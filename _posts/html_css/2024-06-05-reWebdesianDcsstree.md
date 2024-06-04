@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 레거시 코드, IR 효과 시멘틱 태그
-date: 2024-05-13 16:00 +0900
+date: 2024-06-01 16:00 +0900
 description: html & css
 image: ../assets/img/htmlcss01.jpg
 category: html & css

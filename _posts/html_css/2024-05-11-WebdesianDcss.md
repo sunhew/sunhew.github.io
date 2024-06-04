@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 웹 표준과 웬 접근성과 반응형 작업
+title: 웹 표준과 웬 접근성
 date: 2024-05-11 22:51 +0900
 description: html & css
 image: ../assets/img/html_css.png

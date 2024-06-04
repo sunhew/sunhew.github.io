@@ -1,7 +1,7 @@
 ---
 layout: post
 title: seo, 최적화 방법, ID vs class 차이
-date: 2024-06-05 19:24 +0900
+date: 2024-06-04 19:24 +0900
 description: html & css
 image: ../assets/img/htmlcss04.jpg
 category: html & css

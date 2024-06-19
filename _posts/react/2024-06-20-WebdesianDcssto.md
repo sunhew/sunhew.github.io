@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 반응형 작업
-date: 2024-06-20 15:59 +0900
+date: 2024-06-15 15:59 +0900
 description: html & css
 image: ../assets/img/react01.jpg
 category: html & css

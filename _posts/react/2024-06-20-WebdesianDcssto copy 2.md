@@ -1,9 +1,9 @@
 ---
 layout: post
 title: 리액트의 네이티브
-date: 2024-06-20 16:59 +0900
+date: 2024-06-16 16:59 +0900
 description: html & css
-image: ../assets/img/react03.jpg
+image: ../assets/img/react02.jpg
 category: react
 tags: react네이티브 네이티브 react react개념
 published: true

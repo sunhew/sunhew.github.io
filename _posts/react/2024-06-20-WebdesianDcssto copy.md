@@ -10,7 +10,7 @@ published: true
 sitemap: true
 ---
 
-# HTML & CSS
+# REACT
 해당 포스팅에서는 REACT의 DOM을 다룹니다.  <br />
 
 

@@ -10,7 +10,7 @@ published: true
 sitemap: true
 ---
 
-# HTML & CSS
+# REACT
 해당 포스팅에서는 REACT의 특징과 사용하는 이유를 다룹니다.  <br />
 
 

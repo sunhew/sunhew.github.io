@@ -2,7 +2,7 @@
 layout: post
 title: 리액트의 VirtualDOM
 date: 2024-06-18 16:59 +0900
-description: html & css
+description: REACT
 image: ../assets/img/react04.jpg
 category: react
 tags: reactVirtualDOM VirtualDOM react react개념
@@ -13,9 +13,6 @@ sitemap: true
 # REACT
 해당 포스팅에서는 REACT의 VirtualDOM를 다룹니다.  <br />
 
-
-## __이번 포스팅 목차__
-* REACT의 VirtualDOM <br/>
 
 ## __이번 포스팅 목차__
 * REACT의 VirtualDOM <br/>

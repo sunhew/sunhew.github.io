@@ -2,7 +2,7 @@
 layout: post
 title: 리액트의 특징과 사용하는 이유
 date: 2024-06-15 15:59 +0900
-description: html & css
+description: REACT
 image: ../assets/img/react01.jpg
 category: react
 tags: react특징 react사용하는이유 react react개념

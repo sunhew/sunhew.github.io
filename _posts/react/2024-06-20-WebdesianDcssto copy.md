@@ -2,7 +2,7 @@
 layout: post
 title: 리액트의 DOM
 date: 2024-06-17 18:50 +0900
-description: html & css
+description: REACT
 image: ../assets/img/react03.jpg
 category: react
 tags: reactDOM DOM react react개념

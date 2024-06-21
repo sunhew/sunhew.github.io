@@ -1,109 +1,220 @@
 ---
 layout: post
-title: 리액트의 npm
-date: 2024-06-21 22:39 +0900
+title: 리액트의 훅
+date: 2024-06-20 12:39 +0900
 description: REACT
 image: ../assets/img/react06.jpg
 category: react
-tags: reactnpm npm react react개념
+tags: react훅 훅 react react개념
 published: true
 sitemap: true
 ---
 
 # REACT
-해당 포스팅에서는 REACT의 VirtualDOM npm을 다룹니다.  <br />
+해당 포스팅에서는 REACT의 훅을 다룹니다.  <br />
 
 
 ## __이번 포스팅 목차__
-* REACT의 npm <br/>
+* REACT의 훅 <br/>
 
-## __이번 포스팅 목차__
-* REACT의 npm <br/>
+## __리액트 훅의 주요 특징__<br/>
+리액트의 훅(Hooks)은 함수형 컴포넌트에서 상태와 생명주기 기능을 사용할 수 있게 해주는 __새로운 기능__ 입니다. 훅을 사용하면 클래스형 컴포넌트 없이도 리액트의 주요 기능을 활용할 수 있습니다. 
 
-## __리액트 npm의 주요 특징__<br/>
-리액트의 npm(Node Package Manager)은 리액트 프로젝트에서 __패키지와 라이브러리를 관리__ 하는 데 사용되는 __핵심 도구__ 입니다. npm은 전 세계의 개발자들이 공유하는 다양한 패키지를 손쉽게 설치, 업데이트, 삭제할 수 있도록 해줍니다.
+### __리액트 훅의 주요 종류와 사용법__
 
-### __npm의 주요 기능__
+#### __1. useState__
 
-#### __1. 패키지 설치__
-
-* __npm init__: 새로운 리액트 프로젝트를 시작할 때, `npm init` 명령을 사용하여 `package.json` 파일을 생성합니다. 이 파일은 프로젝트의 메타데이터를 포함하고, 의존성을 관리합니다.
-* __npm install__: `npm install <패키지 이름>` 명령을 사용하여 프로젝트에 필요한 패키지를 설치합니다. 이 명령은 `node_modules` 디렉터리에 패키지를 다운로드하고, `package.json` 파일의 `dependencies` 섹션에 추가합니다.
-
-#### __2. 패키지 업데이트__
-
-* __npm update__: `npm update` 명령을 사용하여 프로젝트의 모든 패키지를 최신 버전으로 업데이트합니다. 개별 패키지를 업데이트하려면 `npm update <패키지 이름>`을 사용합니다.
-* __버전 관리__: `package.json` 파일의 `dependencies` 섹션에서 각 패키지의 버전을 명시적으로 관리할 수 있습니다. 예를 들어, `"react": "^17.0.2"`는 17.0.2 이상의 최신 마이너 버전을 의미합니다.
-
-#### __3. 패키지 삭제__
-
-* __npm uninstall__: `npm uninstall <패키지 이름>` 명령을 사용하여 프로젝트에서 패키지를 제거합니다. 이 명령은 `node_modules` 디렉터리에서 패키지를 삭제하고, `package.json` 파일에서 해당 패키지를 제거합니다.
-
-### __npm의 주요 구성 요소__
-
-#### __package.json__
-
-* __메타데이터__: `package.json` 파일은 프로젝트의 이름, 버전, 설명, 주요 파일 등을 포함한 메타데이터를 정의합니다.
-* __의존성 관리__: `dependencies`와 `devDependencies` 섹션을 통해 프로젝트가 필요로 하는 패키지를 관리합니다. `dependencies`는 애플리케이션 실행 시 필요한 패키지, `devDependencies`는 개발 과정에서 필요한 패키지를 나타냅니다.
-
-#### __node_modules__
-
-* __패키지 저장소__: `node_modules` 디렉터리는 프로젝트에 설치된 모든 패키지를 포함합니다. 이는 패키지 간의 의존성을 해결하고, 해당 패키지를 로드하는 데 사용됩니다.
-
-#### __package-lock.json__
-
-* __고정된 버전 관리__: `package-lock.json` 파일은 프로젝트의 정확한 패키지 트리를 기록하여 동일한 의존성 버전이 사용되도록 보장합니다. 이는 팀 간 협업과 배포 시 일관성을 유지하는 데 중요합니다.
-
-### __npm 스크립트__
-
-* __스크립트 정의__: `package.json` 파일의 `scripts` 섹션에서 다양한 명령을 정의할 수 있습니다. 예를 들어, `"start": "react-scripts start"`는 `npm start` 명령을 통해 리액트 개발 서버를 실행할 수 있게 합니다.
-* __자동화__: 빌드, 테스트, 배포 등의 작업을 npm 스크립트를 통해 자동화할 수 있습니다. 이는 개발 프로세스를 간소화하고 효율성을 높이는 데 도움이 됩니다.
-
-### __npm 레지스트리__
-
-* __공유 패키지__: npm 레지스트리는 전 세계 개발자들이 패키지를 공유하는 중앙 저장소입니다. `npm publish` 명령을 사용하여 자신이 작성한 패키지를 레지스트리에 배포할 수 있습니다.
-* __패키지 검색__: `npm search <키워드>` 명령을 사용하여 필요한 패키지를 검색할 수 있습니다. 이는 프로젝트에 적합한 라이브러리나 도구를 찾는 데 유용합니다.
-
-### __npm의 장점__
-
-* __풍부한 생태계__: npm에는 수많은 패키지와 라이브러리가 등록되어 있어, 개발자가 필요한 거의 모든 도구를 쉽게 찾고 사용할 수 있습니다.
-* __자동화된 의존성 관리__: npm은 패키지 설치, 업데이트, 삭제 등의 과정을 자동으로 처리하여 개발자가 의존성을 효율적으로 관리할 수 있게 합니다.
-* __커뮤니티 지원__: npm은 전 세계 개발자 커뮤니티에 의해 활발히 유지보수되고 있어, 풍부한 자료와 지원을 받을 수 있습니다.
-
-### __npm의 단점__
-
-* __패키지 중복__: `node_modules` 디렉터리에 중복된 패키지가 포함될 수 있어, 프로젝트 크기가 커질 수 있습니다.
-* __보안 취약점__: npm 패키지 중에는 보안 취약점을 포함한 것이 있을 수 있으므로, 정기적인 보안 점검이 필요합니다.
-* __버전 호환성__: 다양한 패키지의 버전 간 호환성 문제로 인해, 의존성 충돌이 발생할 수 있습니다.
-
-### __npm 사용 예시__
-아래 예시는 npm을 사용하여 리액트 프로젝트를 초기화하고, 필요한 패키지를 설치하고, 개발 서버를 실행하며, 패키지를 업데이트하고 제거하는 과정을 보여줍니다.
-
+* __상태 관리__: `useState` 훅은 함수형 컴포넌트에서 상태를 관리할 수 있게 해줍니다. 상태는 컴포넌트 내에서 값이 변경될 수 있는 데이터를 의미합니다.
+* __사용법__: `const [state, setState] = useState(initialState)` 형식으로 사용하며, `state`는 현재 상태 값, `setState`는 상태를 갱신하는 함수입니다.
+  
 ```javascript
-// 새로운 리액트 프로젝트 초기화
-npm init
+import React, { useState } from 'react';
 
-// 리액트 및 리액트 DOM 설치
-npm install react react-dom
+function Counter() {
+  const [count, setCount] = useState(0);
 
-// 개발 서버 실행
-npm start
-
-// 패키지 업데이트
-npm update
-
-// 특정 패키지 제거
-npm uninstall <패키지 이름>
+  return (
+    <div>
+      <p>You clicked {count} times</p>
+      <button onClick={() => setCount(count + 1)}>
+        Click me
+      </button>
+    </div>
+  );
+}
 ```
 
-### __npm의 활용 사례__
+#### __2. useEffect__
 
-* __프로젝트 초기화__:npm을 사용하면 __새로운 리액트 프로젝트를 쉽게 초기화__ 하고, __필요한 모든 패키지를 설치__ 할 수 있습니다.
+* __사이드 이펙트 처리__: `useEffect` 훅은 함수형 컴포넌트에서 사이드 이펙트 를 수행할 수 있게 해줍니다. 예를 들어, 데이터 fetching, 구독(subscription) 설정, DOM 업데이트 등이 있습니다.
+* __사용법__: `useEffect(() => { /* 효과 함수 */ }, [dependencies])` 형식으로 사용하며, 첫 번째 매개변수는 효과 함수, 두 번째 매개변수는 의존성 배열입니다. 의존성 배열이 비어 있으면 컴포넌트가 처음 렌더링될 때만 효과 함수가 실행됩니다.
 
-* __의존성 관리__: npm은 프로젝트의 __모든 의존성을 효율적으로 관리__ 하여, __개발자가 필요한 도구와 라이브러리를 손쉽게 추가하고 업데이트__ 할 수 있게 합니다.
+```javascript
+import React, { useState, useEffect } from 'react';
 
-* __자동화된 빌드 시스템__: __npm 스크립트를 통해 빌드, 테스트, 배포 등의 과정을 자동화하여 개발 프로세스를 간소화__ 하고 효율성을 높일 수 있습니다.
+function Example() {
+  const [count, setCount] = useState(0);
 
-### __마무리__
+  useEffect(() => {
+    document.title = `You clicked ${count} times`;
+  }, [count]); // count가 변경될 때마다 실행
 
-리액트의 __npm은 패키지와 라이브러리 관리, 프로젝트 초기화, 의존성 관리, 자동화 등의 기능을 통해 개발 생산성을 크게 향상시킬 수 있는 핵심 도구__ 입니다. 이를 사용하면 __프로젝트의 모든 의존성을 효율적으로 관리__ 할 수 있지만, __보안 취약점, 패키지 중복, 버전 호환성 문제 등의 주의사항도 고려__ 해야 합니다. npm을 잘 이해하고 활용하면, 리액트를 이용한 효율적이고 성능이 뛰어난 애플리케이션을 개발할 수 있습니다.
+  return (
+    <div>
+      <p>You clicked {count} times</p>
+      <button onClick={() => setCount(count + 1)}>
+        Click me
+      </button>
+    </div>
+  );
+}
+```
+
+#### __3. useContext__
+
+* __컨텍스트 사용__: `useContext` 훅은 컴포넌트 트리에서 __컨텍스트(Context)__ 를 쉽게 사용할 수 있게 해줍니다. 컨텍스트는 전역적으로 데이터를 공유할 때 사용됩니다.
+* __사용법__: __`const value = useContext(MyContext)`__ 형식으로 사용하며, __`MyContext`__ 는 __`React.createContext`__ 로 생성한 컨텍스트 객체입니다
+
+```javascript
+import React, { useContext } from 'react';
+
+const MyContext = React.createContext();
+
+function MyComponent() {
+  const value = useContext(MyContext);
+  return <div>{value}</div>;
+}
+
+function App() {
+  return (
+    <MyContext.Provider value="Hello, World!">
+      <MyComponent />
+    </MyContext.Provider>
+  );
+}
+```
+
+#### __4. useReducer__
+
+* __복잡한 상태 관리__: `useReducer` 훅은 __복잡한 상태 로직__ 을 관리할 때 유용합니다. 주로 Redux와 같은 패턴을 사용할 때 비슷한 방식으로 상태를 관리할 수 있습니다.
+* __사용법__: `onst [state, dispatch] = useReducer(reducer, initialState)` 형식으로 사용하며, `reducer`는 상태와 액션을 받아 새로운 상태를 반환하는 함수입니다.
+
+```javascript
+import React, { useReducer } from 'react';
+
+const initialState = { count: 0 };
+
+function reducer(state, action) {
+  switch (action.type) {
+    case 'increment':
+      return { count: state.count + 1 };
+    case 'decrement':
+      return { count: state.count - 1 };
+    default:
+      throw new Error();
+  }
+}
+
+function Counter() {
+  const [state, dispatch] = useReducer(reducer, initialState);
+
+  return (
+    <div>
+      <p>Count: {state.count}</p>
+      <button onClick={() => dispatch({ type: 'increment' })}>+</button>
+      <button onClick={() => dispatch({ type: 'decrement' })}>-</button>
+    </div>
+  );
+}
+```
+
+#### __5. useRef__
+
+* __복잡한 상태 관리__: `useReducer` 훅은 __복잡한 상태 로직__ 을 관리할 때 유용합니다. 주로 Redux와 같은 패턴을 사용할 때 비슷한 방식으로 상태를 관리할 수 있습니다.
+* __사용법__: `onst [state, dispatch] = useReducer(reducer, initialState)` 형식으로 사용하며, `reducer`는 상태와 액션을 받아 새로운 상태를 반환하는 함수입니다.
+
+```javascript
+import React, { useReducer } from 'react';
+
+const initialState = { count: 0 };
+
+function reducer(state, action) {
+  switch (action.type) {
+    case 'increment':
+      return { count: state.count + 1 };
+    case 'decrement':
+      return { count: state.count - 1 };
+    default:
+      throw new Error();
+  }
+}
+
+function Counter() {
+  const [state, dispatch] = useReducer(reducer, initialState);
+
+  return (
+    <div>
+      <p>Count: {state.count}</p>
+      <button onClick={() => dispatch({ type: 'increment' })}>+</button>
+      <button onClick={() => dispatch({ type: 'decrement' })}>-</button>
+    </div>
+  );
+}
+```
+
+### __훅의 장점과 단점__
+
+#### __장점__
+
+* __함수형 컴포넌트__: 훅을 사용하면 함수형 컴포넌트에서 클래스형 컴포넌트의 기능을 동일하게 사용할 수 있어 코드가 간결하고 이해하기 쉬워집니다.
+
+* __재사용 가능한 로직__: 커스텀 훅을 만들어 상태 로직을 여러 컴포넌트에서 재사용할 수 있습니다.
+
+* __테스트 용이__: 함수형 컴포넌트는 테스트하기가 더 용이하며, 훅을 사용하면 테스트 코드 작성이 더욱 쉬워집니다.
+
+#### __단점__
+
+* __학습 곡선__: 클래스형 컴포넌트에 익숙한 개발자에게는 훅의 개념과 사용법을 익히는 데 시간이 걸릴 수 있습니다.
+
+* __규칙 준수__: 훅을 사용할 때는 특정 규칙(예: 훅은 컴포넌트의 최상위에서만 호출되어야 함)을 준수해야 하며, 이를 어길 경우 예기치 않은 동작이 발생할 수 있습니다.
+
+* __복잡한 상태 관리__: 복잡한 상태 로직을 훅으로 관리할 때는 가독성이 떨어질 수 있으며, 이를 해결하기 위해 리듀서나 상태 관리 라이브러리를 추가로 사용할 수 있습니다.
+
+### __사용 예시__
+아래 예시는 `useState`와 `useEffect` 훅을 사용하여 데이터를 가져오고, 컴포넌트가 처음 마운트될 때만 데이터를 가져오는 간단한 컴포넌트를 보여줍니다.
+
+```javascript
+import React, { useState, useEffect } from 'react';
+
+function ExampleComponent() {
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    fetch('https://api.example.com/data')
+      .then(response => response.json())
+      .then(data => setData(data));
+  }, []); // 빈 배열이므로 컴포넌트가 처음 마운트될 때만 실행
+
+  return (
+    <div>
+      {data ? (
+        <pre>{JSON.stringify(data, null, 2)}</pre>
+      ) : (
+        <p>Loading...</p>
+      )}
+    </div>
+  );
+}
+```
+
+### __훅의 활용 예시__
+
+* __데이터 페칭__: `useEffect` 훅을 사용하여 컴포넌트가 마운트될 때 API 요청을 보내고 데이터를 가져올 수 있습니다.
+
+* __폼 관리__: `useState` 훅을 사용하여 폼의 입력 값을 관리하고, 입력 값이 변경될 때 상태를 업데이트할 수 있습니다.
+
+* __애니메이션__: `useRef` 훅을 사용하여 DOM 요소에 직접 접근하고, 애니메이션을 제어할 수 있습니다.
+
+### 마무리
+
+리액트의 훅(Hooks)은 __함수형 컴포넌트에서 상태와 생명주기 기능을 사용할 수 있게 해주는 강력한 기능__ 입니다. 주요 훅으로는 `useState`, `useEffect`, `useContext`, `useReducer`, `useRef` 등이 있으며, 이를 통해 함수형 컴포넌트에서 다양한 기능을 구현할 수 있습니다. 훅을 잘 이해하고 활용하면, __코드의 간결성과 재사용성 을 높일 수 있으며, 개발 생산성 을 크게 향상__ 시킬 수 있습니다. 그러나 훅을 사용할 때는 특정 규칙을 준수해야 하며, 복잡한 상태 관리를 위해 추가적인 도구가 필요할 수 있습니다.

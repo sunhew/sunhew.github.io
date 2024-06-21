@@ -11,11 +11,8 @@ sitemap: true
 ---
 
 # REACT
-해당 포스팅에서는 REACT의 VirtualDOM npm을 다룹니다.  <br />
+해당 포스팅에서는 REACT의 npm을 다룹니다.  <br />
 
-
-## __이번 포스팅 목차__
-* REACT의 npm <br/>
 
 ## __이번 포스팅 목차__
 * REACT의 npm <br/>

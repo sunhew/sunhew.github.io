@@ -3,7 +3,7 @@ layout: post
 title: 리액트의 Side-Effect
 date: 2024-06-25 01:37 +0900
 description: REACT
-image: ../assets/img/react08.jpg
+image: ../assets/img/react09.jpg
 category: react
 tags: reactSide-Effect Side-Effect react
 published: true

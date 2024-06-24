@@ -1,220 +1,226 @@
 ---
 layout: post
-title: 리액트의 훅
-date: 2024-06-25 00:37 +0900
+title: 리액트의 상태 관리 라이브러리와 필요성
+date: 2024-06-21 00:37 +0900
 description: REACT
 image: ../assets/img/react07.jpg
 category: react
-tags: react훅 훅 react react개념
+tags: react상태관리라이브러리 상태관리라이브러리 라이브러리 react
 published: true
 sitemap: true
 ---
 
 # REACT
-해당 포스팅에서는 REACT의 훅을 다룹니다.  <br />
+해당 포스팅에서는 REACT의 상태 관리 라이브러리에 대해 다룹니다.  <br />
 
 
 ## __이번 포스팅 목차__
-* REACT의 훅 <br/>
+* REACT의 상태 관리 라이브러리와 필요성 <br/>
 
 ## __리액트 훅의 주요 특징__<br/>
-리액트의 훅(Hooks)은 함수형 컴포넌트에서 상태와 생명주기 기능을 사용할 수 있게 해주는 __새로운 기능__ 입니다. 훅을 사용하면 클래스형 컴포넌트 없이도 리액트의 주요 기능을 활용할 수 있습니다. 
+리액트에서 __상태 관리는 컴포넌트 간의 데이터와 UI 상태를 효과적으로 관리__ 하기 위해 중요합니다. __복잡한 애플리케이션에서는 상태가 여러 컴포넌트 간에 공유될 필요가 있으며, 상태 변경 시 효율적으로 업데이트__ 해야 합니다. 이러한 요구 사항을 충족하기 위해 다양한 상태 관리 라이브러리가 등장했으며, 리액트 애플리케이션에서 상태 관리 라이브러리는 애플리케이션의 규모와 복잡성에 따라 선택됩니다.
 
-### __리액트 훅의 주요 종류와 사용법__
+### __리액트 라이브러리__
 
-#### __1. useState__
+#### __상태 관리 라이브러리가 필요한 이유__
 
-* __상태 관리__: `useState` 훅은 함수형 컴포넌트에서 상태를 관리할 수 있게 해줍니다. 상태는 컴포넌트 내에서 값이 변경될 수 있는 데이터를 의미합니다.
-* __사용법__: `const [state, setState] = useState(initialState)` 형식으로 사용하며, `state`는 현재 상태 값, `setState`는 상태를 갱신하는 함수입니다.
+* __상태의 복잡성 증가__: 애플리케이션이 커질수록 상태를 관리하고 업데이트하는 것이 __복잡해집니다.__
+
+* __컴포넌트 간 상태 공유__: 여러 컴포넌트가 동일한 상태를 공유하고 있을 때, 이를 __효율적으로 관리__ 해야 합니다.
+
+* __성능 최적화__: 불필요한 렌더링을 방지하고 __성능을 최적화__ 할 필요가 있습니다.
+
+* __코드 구조화__: 상태 관리 로직을 일관되게 __구조화하여 코드 가독성__ 을 높이고 __유지 보수__ 를 용이하게 합니다.
+
+#### __주요 상태 관리 라이브러리__
+
+##### __Redux__
+Redux는 리액트 애플리케이션에서 상태를 __중앙 집중식으로 관리__ 하는 가장 널리 사용되는 라이브러리 중 하나입니다. 상태를 __단일 스토어__ 에서 관리하며, 액션(action)과 리듀서(reducer)를 사용하여 상태를 업데이트합니다.
+
+###### __장점__
+* 상태의 __중앙 집중식 관리__
+
+* 상태 변화 __추적 및 디버깅 용이__
+
+* __미들웨어__ 를 통한 확장성 (예: Redux Thunk, Redux Saga)
+
+###### __단점__
+* __보일러플레이트 코드__ 가 많음
+
+* 작은 프로젝트에서는 __오버헤드__ 가 있을 수 있음
   
 ```javascript
-import React, { useState } from 'react';
+import { createStore } from 'redux';
 
-function Counter() {
-  const [count, setCount] = useState(0);
-
-  return (
-    <div>
-      <p>You clicked {count} times</p>
-      <button onClick={() => setCount(count + 1)}>
-        Click me
-      </button>
-    </div>
-  );
-}
-```
-
-#### __2. useEffect__
-
-* __사이드 이펙트 처리__: `useEffect` 훅은 함수형 컴포넌트에서 사이드 이펙트 를 수행할 수 있게 해줍니다. 예를 들어, 데이터 fetching, 구독(subscription) 설정, DOM 업데이트 등이 있습니다.
-* __사용법__: `useEffect(() => { /* 효과 함수 */ }, [dependencies])` 형식으로 사용하며, 첫 번째 매개변수는 효과 함수, 두 번째 매개변수는 의존성 배열입니다. 의존성 배열이 비어 있으면 컴포넌트가 처음 렌더링될 때만 효과 함수가 실행됩니다.
-
-```javascript
-import React, { useState, useEffect } from 'react';
-
-function Example() {
-  const [count, setCount] = useState(0);
-
-  useEffect(() => {
-    document.title = `You clicked ${count} times`;
-  }, [count]); // count가 변경될 때마다 실행
-
-  return (
-    <div>
-      <p>You clicked {count} times</p>
-      <button onClick={() => setCount(count + 1)}>
-        Click me
-      </button>
-    </div>
-  );
-}
-```
-
-#### __3. useContext__
-
-* __컨텍스트 사용__: `useContext` 훅은 컴포넌트 트리에서 __컨텍스트(Context)__ 를 쉽게 사용할 수 있게 해줍니다. 컨텍스트는 전역적으로 데이터를 공유할 때 사용됩니다.
-* __사용법__: __`const value = useContext(MyContext)`__ 형식으로 사용하며, __`MyContext`__ 는 __`React.createContext`__ 로 생성한 컨텍스트 객체입니다
-
-```javascript
-import React, { useContext } from 'react';
-
-const MyContext = React.createContext();
-
-function MyComponent() {
-  const value = useContext(MyContext);
-  return <div>{value}</div>;
-}
-
-function App() {
-  return (
-    <MyContext.Provider value="Hello, World!">
-      <MyComponent />
-    </MyContext.Provider>
-  );
-}
-```
-
-#### __4. useReducer__
-
-* __복잡한 상태 관리__: `useReducer` 훅은 __복잡한 상태 로직__ 을 관리할 때 유용합니다. 주로 Redux와 같은 패턴을 사용할 때 비슷한 방식으로 상태를 관리할 수 있습니다.
-* __사용법__: `onst [state, dispatch] = useReducer(reducer, initialState)` 형식으로 사용하며, `reducer`는 상태와 액션을 받아 새로운 상태를 반환하는 함수입니다.
-
-```javascript
-import React, { useReducer } from 'react';
-
-const initialState = { count: 0 };
-
-function reducer(state, action) {
+// 리듀서
+function counterReducer(state = { count: 0 }, action) {
   switch (action.type) {
     case 'increment':
       return { count: state.count + 1 };
     case 'decrement':
       return { count: state.count - 1 };
     default:
-      throw new Error();
+      return state;
   }
 }
 
-function Counter() {
-  const [state, dispatch] = useReducer(reducer, initialState);
+// 스토어 생성
+const store = createStore(counterReducer);
 
-  return (
-    <div>
-      <p>Count: {state.count}</p>
-      <button onClick={() => dispatch({ type: 'increment' })}>+</button>
-      <button onClick={() => dispatch({ type: 'decrement' })}>-</button>
-    </div>
-  );
-}
+// 액션 디스패치
+store.dispatch({ type: 'increment' });
+console.log(store.getState()); // { count: 1 }
 ```
 
-#### __5. useRef__
+##### __MobX__
+MobX는 상태를 자동으로 __추적__ 하고, 상태가 변경될 때 자동으로 __UI를 업데이트__ 하는 __반응형 상태 관리__ 라이브러리입니다. __객체 지향적__ 접근을 사용하며, 상태를 __관찰 가능한(observable)__ 객체로 만들고 이를 **관찰(observe)**합니다.
 
-* __복잡한 상태 관리__: `useReducer` 훅은 __복잡한 상태 로직__ 을 관리할 때 유용합니다. 주로 Redux와 같은 패턴을 사용할 때 비슷한 방식으로 상태를 관리할 수 있습니다.
-* __사용법__: `onst [state, dispatch] = useReducer(reducer, initialState)` 형식으로 사용하며, `reducer`는 상태와 액션을 받아 새로운 상태를 반환하는 함수입니다.
+###### __장점__
+* 간결하고 __직관적인 API__
 
+* __자동 상태 추적__ 및 업데이트
+
+* 적은 __보일러플레이트 코드__
+
+###### __단점__
+* 복잡한 프로젝트에서는 __성능 최적화__ 를 신경 써야 함
+
+* Redux만큼의 __커뮤니티__ 및 __생태계 지원 부족__
+  
 ```javascript
-import React, { useReducer } from 'react';
+import { observable, action } from 'mobx';
 
-const initialState = { count: 0 };
+class CounterStore {
+  @observable count = 0;
 
-function reducer(state, action) {
-  switch (action.type) {
-    case 'increment':
-      return { count: state.count + 1 };
-    case 'decrement':
-      return { count: state.count - 1 };
-    default:
-      throw new Error();
+  @action.bound
+  increment() {
+    this.count++;
+  }
+
+  @action.bound
+  decrement() {
+    this.count--;
   }
 }
 
-function Counter() {
-  const [state, dispatch] = useReducer(reducer, initialState);
-
-  return (
-    <div>
-      <p>Count: {state.count}</p>
-      <button onClick={() => dispatch({ type: 'increment' })}>+</button>
-      <button onClick={() => dispatch({ type: 'decrement' })}>-</button>
-    </div>
-  );
-}
+const counterStore = new CounterStore();
 ```
 
-### __훅의 장점과 단점__
+##### __Context API__
+리액트의 __Context API__ 는 컴포넌트 트리 전체에 걸쳐 __데이터를 전달__ 할 수 있도록 도와줍니다. Redux나 MobX에 비해 가벼운 상태 관리를 제공합니다.
 
-#### __장점__
+###### __장점__
+* 간단하고 __내장된 API__
 
-* __함수형 컴포넌트__: 훅을 사용하면 함수형 컴포넌트에서 클래스형 컴포넌트의 기능을 동일하게 사용할 수 있어 코드가 간결하고 이해하기 쉬워집니다.
+* __보일러플레이트 코드__ 가 적음
 
-* __재사용 가능한 로직__: 커스텀 훅을 만들어 상태 로직을 여러 컴포넌트에서 재사용할 수 있습니다.
+* 작은 프로젝트에 __적합__
 
-* __테스트 용이__: 함수형 컴포넌트는 테스트하기가 더 용이하며, 훅을 사용하면 테스트 코드 작성이 더욱 쉬워집니다.
+###### __단점__
+* 상태가 많아지면 __복잡해질 수 있음__
 
-#### __단점__
-
-* __학습 곡선__: 클래스형 컴포넌트에 익숙한 개발자에게는 훅의 개념과 사용법을 익히는 데 시간이 걸릴 수 있습니다.
-
-* __규칙 준수__: 훅을 사용할 때는 특정 규칙(예: 훅은 컴포넌트의 최상위에서만 호출되어야 함)을 준수해야 하며, 이를 어길 경우 예기치 않은 동작이 발생할 수 있습니다.
-
-* __복잡한 상태 관리__: 복잡한 상태 로직을 훅으로 관리할 때는 가독성이 떨어질 수 있으며, 이를 해결하기 위해 리듀서나 상태 관리 라이브러리를 추가로 사용할 수 있습니다.
-
-### __사용 예시__
-아래 예시는 `useState`와 `useEffect` 훅을 사용하여 데이터를 가져오고, 컴포넌트가 처음 마운트될 때만 데이터를 가져오는 간단한 컴포넌트를 보여줍니다.
-
+* __성능 최적화__ 를 신경 써야 함
+  
 ```javascript
-import React, { useState, useEffect } from 'react';
+import React, { createContext, useContext, useState } from 'react';
 
-function ExampleComponent() {
-  const [data, setData] = useState(null);
+const CounterContext = createContext();
 
-  useEffect(() => {
-    fetch('https://api.example.com/data')
-      .then(response => response.json())
-      .then(data => setData(data));
-  }, []); // 빈 배열이므로 컴포넌트가 처음 마운트될 때만 실행
+function CounterProvider({ children }) {
+  const [count, setCount] = useState(0);
+
+  return (
+    <CounterContext.Provider value={{ count, setCount }}>
+      {children}
+    </CounterContext.Provider>
+  );
+}
+
+function useCounter() {
+  return useContext(CounterContext);
+}
+```
+##### __Context API__
+리액트의 __Context API__ 는 컴포넌트 트리 전체에 걸쳐 __데이터를 전달__ 할 수 있도록 도와줍니다. Redux나 MobX에 비해 가벼운 상태 관리를 제공합니다.
+
+###### __장점__
+* 간단하고 __내장된 API__
+
+* __보일러플레이트 코드__ 가 적음
+
+* 작은 프로젝트에 __적합__
+
+###### __단점__
+* 상태가 많아지면 __복잡해질 수 있음__
+
+* __성능 최적화__ 를 신경 써야 함
+  
+```javascript
+import React, { createContext, useContext, useState } from 'react';
+
+const CounterContext = createContext();
+
+function CounterProvider({ children }) {
+  const [count, setCount] = useState(0);
+
+  return (
+    <CounterContext.Provider value={{ count, setCount }}>
+      {children}
+    </CounterContext.Provider>
+  );
+}
+
+function useCounter() {
+  return useContext(CounterContext);
+}
+```
+
+##### __Recoil__
+Recoil은 페이스북에서 개발한 리액트 상태 관리 라이브러리로, __글로벌 상태__ 를 다루기 쉽게 만들어줍니다. Recoil은 **atom(상태의 단위)**과 __selector(파생 상태 및 비동기 로직)__ 개념을 사용합니다.
+
+###### __장점__
+* 간결한 __API__
+
+* __비동기 상태 관리 용이__
+
+* 리액트 __Concurrent Mode__ 와 잘 __호환됨__
+
+###### __단점__
+* 비교적 __새로운 라이브러리__ 로, 생태계가 작음
+
+* 사용 방법에 익숙해지기 위해 __학습 필요__
+  
+```javascript
+import { atom, selector, useRecoilState, useRecoilValue } from 'recoil';
+
+const countState = atom({
+  key: 'countState',
+  default: 0,
+});
+
+const doubledCountState = selector({
+  key: 'doubledCountState',
+  get: ({ get }) => {
+    const count = get(countState);
+    return count * 2;
+  },
+});
+
+function Counter() {
+  const [count, setCount] = useRecoilState(countState);
+  const doubledCount = useRecoilValue(doubledCountState);
 
   return (
     <div>
-      {data ? (
-        <pre>{JSON.stringify(data, null, 2)}</pre>
-      ) : (
-        <p>Loading...</p>
-      )}
+      <p>Count: {count}</p>
+      <p>Doubled Count: {doubledCount}</p>
+      <button onClick={() => setCount(count + 1)}>Increment</button>
     </div>
   );
 }
 ```
 
-### __훅의 활용 예시__
+#### __마무리__
 
-* __데이터 페칭__: `useEffect` 훅을 사용하여 컴포넌트가 마운트될 때 API 요청을 보내고 데이터를 가져올 수 있습니다.
-
-* __폼 관리__: `useState` 훅을 사용하여 폼의 입력 값을 관리하고, 입력 값이 변경될 때 상태를 업데이트할 수 있습니다.
-
-* __애니메이션__: `useRef` 훅을 사용하여 DOM 요소에 직접 접근하고, 애니메이션을 제어할 수 있습니다.
-
-### 마무리
-
-리액트의 훅(Hooks)은 __함수형 컴포넌트에서 상태와 생명주기 기능을 사용할 수 있게 해주는 강력한 기능__ 입니다. 주요 훅으로는 `useState`, `useEffect`, `useContext`, `useReducer`, `useRef` 등이 있으며, 이를 통해 함수형 컴포넌트에서 다양한 기능을 구현할 수 있습니다. 훅을 잘 이해하고 활용하면, __코드의 간결성과 재사용성 을 높일 수 있으며, 개발 생산성 을 크게 향상__ 시킬 수 있습니다. 그러나 훅을 사용할 때는 특정 규칙을 준수해야 하며, 복잡한 상태 관리를 위해 추가적인 도구가 필요할 수 있습니다.
+리액트 애플리케이션에서 상태 관리 라이브러리는 애플리케이션의 규모와 복잡성에 따라 선택됩니다. 작은 애플리케이션에서는 __Context API__ 나 기본적인 __`useState`__, __`useReducer`__ 로 충분할 수 있지만, 큰 애플리케이션에서는 __Redux, MobX, Recoil__ 과 같은 라이브러리가 필요할 수 있습니다. 각 라이브러리는 고유한 장점과 단점을 가지고 있으므로, 프로젝트의 요구 사항에 따라 적절한 라이브러리를 선택하는 것이 중요합니다.

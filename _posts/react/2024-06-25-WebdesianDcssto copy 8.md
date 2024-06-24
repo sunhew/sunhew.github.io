@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 리액트의 Side-Effect
-date: 2024-06-25 01:37 +0900
+date: 2024-06-23 01:53 +0900
 description: REACT
 image: ../assets/img/react09.jpg
 category: react
@@ -17,29 +17,52 @@ sitemap: true
 ## __이번 포스팅 목차__
 * REACT의 Side-Effect <br/>
 
-## __리액트의 컴포넌트__<br/>
-리액트(React) 컴포넌트는 두 가지 주요 형태로 작성될 수 있습니다. __함수형 컴포넌트__ 와 __클래스형 컴포넌트__ 이 두 가지 형태는 리액트의 주요 업데이트와 발전과 함께 기능적으로 많은 변화를 겪어왔습니다. 여기서는 함수형 컴포넌트와 클래스형 컴포넌트의 차이점, 장단점, 그리고 각 형태를 사용하는 사례에 대해 자세히 설명하겠습니다.
+## __리액트의 사이드 이펙트(Side-Effect)__<br/>
+리액트에서 __사이드 이펙트(Side-Effect)__ 는 컴포넌트의 렌더링과는 별도로 일어나는 연산이나 동작을 말합니다. 이에는 __데이터 가져오기, DOM 조작, 구독 설정 및 해제, 타이머 설정__ 등이 포함됩니다. 리액트 컴포넌트는 주로 순수 함수로 상태를 업데이트하고, UI를 업데이트하기 위해 렌더링을 실행합니다. 그러나 많은 경우 이러한 순수 함수 이외의 부가 작업을 처리해야 할 때 사이드 이펙트가 필요합니다.
 
-### __함수형 컴포넌트 (Functional Components)__
-함수형 컴포넌트는 단순히 자바스크립트 함수로 작성되며, 리액트 훅(Hooks)을 통해 상태 관리와 사이드 이펙트를 처리합니다.
+### __사이드 이펙트의 종류__
 
-#### __특징__
+#### __데이터 가져오기 (Fetching Data)__
+* API 호출을 통해 서버로부터 데이터를 가져와 상태를 업데이트합니다.
 
-* __간단한 구조__ : 함수형 컴포넌트는 기본적으로 함수이기 때문에 간단하고 가독성이 높습니다.
+#### __구독 설정 및 해제 (Subscriptions)__
+* 웹 소켓 연결, 이벤트 리스너 설정 및 해제 등의 작업을 수행합니다.
 
-* __훅 사용__ : 리액트 16.8부터 도입된 훅(Hooks)을 사용하여 상태 관리(`useState`), 생명주기 메서드(`useEffect`), 그리고 다른 리액트 기능을 사용할 수 있습니다.
-  
-#### __예시__
+#### __타이머 설정 (Timers)__
+* `setTimeout`이나 `setInterval`을 사용하여 타이머를 설정하고, 필요시 이를 정리합니다.
+
+#### __DOM 조작 (Direct DOM Manipulation)__
+* 리액트가 직접 처리하지 않는 DOM 조작을 수행합니다.
+
+### __사이드 이펙트를 관리하는 방법__
+
+#### __useEffect 훅__
+리액트의 `useEffect` 훅은 함수형 컴포넌트 내에서 사이드 이펙트를 수행하는 데 사용됩니다. 이 훅은 __컴포넌트가 렌더링된 후에 실행__ 되며, 특정 조건이 변경될 때 다시 실행됩니다.
 
 ```javascript
 import React, { useState, useEffect } from 'react';
 
-function Counter() {
+function ExampleComponent() {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
+    // 브라우저 타이틀을 업데이트하는 사이드 이펙트
     document.title = `You clicked ${count} times`;
-  }, [count]);
+    
+    // 데이터 가져오기 예시
+    async function fetchData() {
+      const response = await fetch('https://api.example.com/data');
+      const data = await response.json();
+      console.log(data);
+    }
+
+    fetchData();
+
+    // 컴포넌트 언마운트 시나 count 변경 시 정리 작업 수행
+    return () => {
+      console.log('Clean up');
+    };
+  }, [count]); // count가 변경될 때마다 이펙트 실행
 
   return (
     <div>
@@ -50,80 +73,59 @@ function Counter() {
 }
 ```
 
-#### __장점__
+#### __useEffect의 동작__
 
-* __간결함__ : 함수형 컴포넌트는 코드가 짧고 간결합니다.
+* __초기 렌더링 시 실행__: 컴포넌트가 처음 렌더링될 때 `useEffect`가 실행됩니다.
 
-* __직관적인 상태 관리__ : 훅을 사용하여 상태와 생명주기를 직관적으로 관리할 수 있습니다.
+* __의존성 배열__: 두 번째 인자로 전달되는 배열에 포함된 값이 변경될 때마다 `useEffect`가 다시 실행됩니다.
 
-* __테스트 용이__ : 함수형 컴포넌트는 순수 함수에 가깝기 때문에 테스트하기 쉽습니다.
+    * 빈 배열(`[]`)을 전달하면, 이 이펙트는 컴포넌트가 언마운트 될 때만 정리 함수가 실행됩니다.
 
-#### __단점__
-
-* __초기 학습 곡선__ : 훅의 개념과 사용법을 처음 접하는 개발자에게는 다소 어려울 수 있습니다.
-
-### __클래스형 컴포넌트 (Class Components)__
-클래스형 컴포넌트는 __ES6 클래스 문법을 사용하여 작성__ 되며, 리액트 생명주기 메서드를 통해 __상태와 사이드 이펙트를 관리__ 합니다.
-
-#### __특징__
-
-* __상태와 생명주기 메서드__ : 클래스형 컴포넌트는 __상태(`state`)__ 와 __생명주기 메서드(`componentDidMount`, `componentDidUpdate`, `componentWillUnmount` 등)__ 를 통해 상태와 사이드 이펙트를 관리합니다.
-
-* __this 바인딩__ : 클래스형 컴포넌트에서는 `this` 키워드를 사용하여 클래스의 속성과 메서드에 접근해야 합니다.
-  
-#### __예시__
+* __정리 함수__: `useEffect` 내에서 반환되는 함수는 __컴포넌트가 언마운트되거나__, 의존성 배열의 값이 변경될 때 실행됩니다.
 
 ```javascript
-import React, { Component } from 'react';
+useEffect(() => {
+  // 이펙트 코드
 
-class Counter extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { count: 0 };
-  }
-
-  componentDidMount() {
-    document.title = `You clicked ${this.state.count} times`;
-  }
-
-  componentDidUpdate() {
-    document.title = `You clicked ${this.state.count} times`;
-  }
-
-  incrementCount = () => {
-    this.setState({ count: this.state.count + 1 });
+  return () => {
+    // 정리 코드
   };
+}, [dependencies]);
+```
 
-  render() {
-    return (
-      <div>
-        <p>You clicked {this.state.count} times</p>
-        <button onClick={this.incrementCount}>Click me</button>
-      </div>
-    );
-  }
+### __사이드 이펙트 사용 시 주의사항__
+
+* __의존성 배열 설정__: 의존성 배열을 정확히 설정하여 불필요한 재실행을 피합니다.
+
+    * 의존성 배열에 누락된 값이 있으면 최신 상태를 반영하지 못할 수 있습니다.
+
+* __정리 작업 수행__: 구독 설정, 타이머, 직접 DOM 조작 등은 컴포넌트가 언마운트될 때 반드시 정리해야 메모리 누수를 방지할 수 있습니다.
+
+* __비동기 작업 처리__: 비동기 작업이 포함된 경우, 컴포넌트가 언마운트된 후에도 작업이 계속될 수 있으므로, 적절히 정리합니다.
+
+    * 이를 위해, 예를 들어, `AbortController`를 사용할 수 있습니다.
+
+### __기타 훅__
+
+#### __useLayoutEffect__
+
+__`useLayoutEffect`__ 는 __`useEffect`__ 와 유사하지만, 모든 __DOM 변형이 실행되고 브라우저가 화면을 그리기 전에 동기적으로 실행__ 됩니다. 이는 레이아웃을 조작하거나 DOM에서 값을 읽어오는 작업에 유용합니다.
+
+```javascript
+import React, { useLayoutEffect, useRef } from 'react';
+
+function LayoutEffectExample() {
+  const divRef = useRef();
+
+  useLayoutEffect(() => {
+    // DOM 변형 작업
+    const { height } = divRef.current.getBoundingClientRect();
+    console.log('Height:', height);
+  });
+
+  return <div ref={divRef}>Hello, world!</div>;
 }
 ```
 
-#### __장점__
-
-* __명확한 생명주기 관리__ : 생명주기 메서드를 통해 상태와 사이드 이펙트를 명확하게 관리할 수 있습니다.
-
-* __전통적 접근__ : 객체 지향 프로그래밍(OOP)에 익숙한 개발자에게 친숙합니다.
-
-#### __단점__
-
-* __복잡한 문법__ : 클래스형 컴포넌트는 함수형 컴포넌트에 비해 더 복잡한 문법을 가지고 있습니다.
-
-* __this 바인딩 문제__ : `this` 키워드를 바인딩해야 하는 번거로움이 있습니다.
-
-### __함수형 컴포넌트와 클래스형 컴포넌트의 선택 기준__
-
-* __새 프로젝트__ : 함수형 컴포넌트와 훅을 사용하는 것이 권장됩니다. 리액트 커뮤니티와 공식 문서에서도 함수형 컴포넌트를 우선적으로 사용하는 것을 추천합니다.
-
-* __기존 코드베이스__ : 이미 클래스형 컴포넌트를 많이 사용하고 있는 기존 프로젝트에서는 일관성을 위해 계속 클래스형 컴포넌트를 사용하는 것이 좋을 수 있습니다.
-
-* __성능 및 최적화__ : 함수형 컴포넌트와 훅은 리액트의 최신 기능과 최적화 기법을 더 잘 활용할 수 있습니다.
-
 ### __마무리__
-리액트 컴포넌트를 작성할 때는 __함수형 컴포넌트__ 와 __클래스형 컴포넌트__ 중 프로젝트와 팀의 요구 사항에 맞는 방식을 선택하면 됩니다. 함수형 컴포넌트는 __간결하고 직관적인 코드__ 를 작성할 수 있게 해주며, 클래스형 컴포넌트는 __명확한 구조와 생명주기 관리__ 를 제공합니다. 최신 리액트 개발에서는 함수형 컴포넌트와 훅을 사용하는 것이 점점 더 일반화되고 있습니다.
+리액트 컴포넌트에서 사이드 __이펙트__ 는 렌더링과 별도로 발생하는 중요한 작업들을 처리하는 방법입니다. __`useEffect` 훅__ 은 함수형 컴포넌트에서 이러한 작업을 관리하는 기본 도구이며, 적절한 __의존성 배열__ 설정과 __정리 작업__ 을 통해 효율적이고 안정적인 컴포넌트 작성을 돕습니다. __`useLayoutEffect`__ 는 DOM 조작과 관련된 작업에 유용하며, 각각의 용도를 이해하고 적절하게 사용하는 것이 중요합니다.

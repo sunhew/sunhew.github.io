@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 리액트의 함수형 vs 클래스형
-date: 2024-06-25 01:15 +0900
+date: 2024-06-22 01:35 +0900
 description: REACT
 image: ../assets/img/react08.jpg
 category: react
@@ -17,210 +17,113 @@ sitemap: true
 ## __이번 포스팅 목차__
 * REACT의 함수형 vs 클래스형 <br/>
 
-## __리액트 훅의 주요 특징__<br/>
-리액트에서 __상태 관리는 컴포넌트 간의 데이터와 UI 상태를 효과적으로 관리__ 하기 위해 중요합니다. __복잡한 애플리케이션에서는 상태가 여러 컴포넌트 간에 공유될 필요가 있으며, 상태 변경 시 효율적으로 업데이트__ 해야 합니다. 이러한 요구 사항을 충족하기 위해 다양한 상태 관리 라이브러리가 등장했으며, 리액트 애플리케이션에서 상태 관리 라이브러리는 애플리케이션의 규모와 복잡성에 따라 선택됩니다.
+## __리액트의 컴포넌트__<br/>
+리액트(React) 컴포넌트는 두 가지 주요 형태로 작성될 수 있습니다. __함수형 컴포넌트__ 와 __클래스형 컴포넌트__ 이 두 가지 형태는 리액트의 주요 업데이트와 발전과 함께 기능적으로 많은 변화를 겪어왔습니다. 여기서는 함수형 컴포넌트와 클래스형 컴포넌트의 차이점, 장단점, 그리고 각 형태를 사용하는 사례에 대해 자세히 설명하겠습니다.
 
-### __리액트 라이브러리__
+### __함수형 컴포넌트 (Functional Components)__
+함수형 컴포넌트는 단순히 자바스크립트 함수로 작성되며, 리액트 훅(Hooks)을 통해 상태 관리와 사이드 이펙트를 처리합니다.
 
-#### __상태 관리 라이브러리가 필요한 이유__
+#### __특징__
 
-* __상태의 복잡성 증가__: 애플리케이션이 커질수록 상태를 관리하고 업데이트하는 것이 __복잡해집니다.__
+* __간단한 구조__ : 함수형 컴포넌트는 기본적으로 함수이기 때문에 간단하고 가독성이 높습니다.
 
-* __컴포넌트 간 상태 공유__: 여러 컴포넌트가 동일한 상태를 공유하고 있을 때, 이를 __효율적으로 관리__ 해야 합니다.
-
-* __성능 최적화__: 불필요한 렌더링을 방지하고 __성능을 최적화__ 할 필요가 있습니다.
-
-* __코드 구조화__: 상태 관리 로직을 일관되게 __구조화하여 코드 가독성__ 을 높이고 __유지 보수__ 를 용이하게 합니다.
-
-#### __주요 상태 관리 라이브러리__
-
-##### __Redux__
-Redux는 리액트 애플리케이션에서 상태를 __중앙 집중식으로 관리__ 하는 가장 널리 사용되는 라이브러리 중 하나입니다. 상태를 __단일 스토어__ 에서 관리하며, 액션(action)과 리듀서(reducer)를 사용하여 상태를 업데이트합니다.
-
-###### __장점__
-* 상태의 __중앙 집중식 관리__
-
-* 상태 변화 __추적 및 디버깅 용이__
-
-* __미들웨어__ 를 통한 확장성 (예: Redux Thunk, Redux Saga)
-
-###### __단점__
-* __보일러플레이트 코드__ 가 많음
-
-* 작은 프로젝트에서는 __오버헤드__ 가 있을 수 있음
+* __훅 사용__ : 리액트 16.8부터 도입된 훅(Hooks)을 사용하여 상태 관리(`useState`), 생명주기 메서드(`useEffect`), 그리고 다른 리액트 기능을 사용할 수 있습니다.
   
+#### __예시__
+
 ```javascript
-import { createStore } from 'redux';
-
-// 리듀서
-function counterReducer(state = { count: 0 }, action) {
-  switch (action.type) {
-    case 'increment':
-      return { count: state.count + 1 };
-    case 'decrement':
-      return { count: state.count - 1 };
-    default:
-      return state;
-  }
-}
-
-// 스토어 생성
-const store = createStore(counterReducer);
-
-// 액션 디스패치
-store.dispatch({ type: 'increment' });
-console.log(store.getState()); // { count: 1 }
-```
-
-##### __MobX__
-MobX는 상태를 자동으로 __추적__ 하고, 상태가 변경될 때 자동으로 __UI를 업데이트__ 하는 __반응형 상태 관리__ 라이브러리입니다. __객체 지향적__ 접근을 사용하며, 상태를 __관찰 가능한(observable)__ 객체로 만들고 이를 **관찰(observe)**합니다.
-
-###### __장점__
-* 간결하고 __직관적인 API__
-
-* __자동 상태 추적__ 및 업데이트
-
-* 적은 __보일러플레이트 코드__
-
-###### __단점__
-* 복잡한 프로젝트에서는 __성능 최적화__ 를 신경 써야 함
-
-* Redux만큼의 __커뮤니티__ 및 __생태계 지원 부족__
-  
-```javascript
-import { observable, action } from 'mobx';
-
-class CounterStore {
-  @observable count = 0;
-
-  @action.bound
-  increment() {
-    this.count++;
-  }
-
-  @action.bound
-  decrement() {
-    this.count--;
-  }
-}
-
-const counterStore = new CounterStore();
-```
-
-##### __Context API__
-리액트의 __Context API__ 는 컴포넌트 트리 전체에 걸쳐 __데이터를 전달__ 할 수 있도록 도와줍니다. Redux나 MobX에 비해 가벼운 상태 관리를 제공합니다.
-
-###### __장점__
-* 간단하고 __내장된 API__
-
-* __보일러플레이트 코드__ 가 적음
-
-* 작은 프로젝트에 __적합__
-
-###### __단점__
-* 상태가 많아지면 __복잡해질 수 있음__
-
-* __성능 최적화__ 를 신경 써야 함
-  
-```javascript
-import React, { createContext, useContext, useState } from 'react';
-
-const CounterContext = createContext();
-
-function CounterProvider({ children }) {
-  const [count, setCount] = useState(0);
-
-  return (
-    <CounterContext.Provider value={{ count, setCount }}>
-      {children}
-    </CounterContext.Provider>
-  );
-}
-
-function useCounter() {
-  return useContext(CounterContext);
-}
-```
-##### __Context API__
-리액트의 __Context API__ 는 컴포넌트 트리 전체에 걸쳐 __데이터를 전달__ 할 수 있도록 도와줍니다. Redux나 MobX에 비해 가벼운 상태 관리를 제공합니다.
-
-###### __장점__
-* 간단하고 __내장된 API__
-
-* __보일러플레이트 코드__ 가 적음
-
-* 작은 프로젝트에 __적합__
-
-###### __단점__
-* 상태가 많아지면 __복잡해질 수 있음__
-
-* __성능 최적화__ 를 신경 써야 함
-  
-```javascript
-import React, { createContext, useContext, useState } from 'react';
-
-const CounterContext = createContext();
-
-function CounterProvider({ children }) {
-  const [count, setCount] = useState(0);
-
-  return (
-    <CounterContext.Provider value={{ count, setCount }}>
-      {children}
-    </CounterContext.Provider>
-  );
-}
-
-function useCounter() {
-  return useContext(CounterContext);
-}
-```
-
-##### __Recoil__
-Recoil은 페이스북에서 개발한 리액트 상태 관리 라이브러리로, __글로벌 상태__ 를 다루기 쉽게 만들어줍니다. Recoil은 **atom(상태의 단위)**과 __selector(파생 상태 및 비동기 로직)__ 개념을 사용합니다.
-
-###### __장점__
-* 간결한 __API__
-
-* __비동기 상태 관리 용이__
-
-* 리액트 __Concurrent Mode__ 와 잘 __호환됨__
-
-###### __단점__
-* 비교적 __새로운 라이브러리__ 로, 생태계가 작음
-
-* 사용 방법에 익숙해지기 위해 __학습 필요__
-  
-```javascript
-import { atom, selector, useRecoilState, useRecoilValue } from 'recoil';
-
-const countState = atom({
-  key: 'countState',
-  default: 0,
-});
-
-const doubledCountState = selector({
-  key: 'doubledCountState',
-  get: ({ get }) => {
-    const count = get(countState);
-    return count * 2;
-  },
-});
+import React, { useState, useEffect } from 'react';
 
 function Counter() {
-  const [count, setCount] = useRecoilState(countState);
-  const doubledCount = useRecoilValue(doubledCountState);
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    document.title = `You clicked ${count} times`;
+  }, [count]);
 
   return (
     <div>
-      <p>Count: {count}</p>
-      <p>Doubled Count: {doubledCount}</p>
-      <button onClick={() => setCount(count + 1)}>Increment</button>
+      <p>You clicked {count} times</p>
+      <button onClick={() => setCount(count + 1)}>Click me</button>
     </div>
   );
 }
 ```
 
-#### __마무리__
+#### __장점__
 
-리액트 애플리케이션에서 상태 관리 라이브러리는 애플리케이션의 규모와 복잡성에 따라 선택됩니다. 작은 애플리케이션에서는 __Context API__ 나 기본적인 __`useState`__, __`useReducer`__ 로 충분할 수 있지만, 큰 애플리케이션에서는 __Redux, MobX, Recoil__ 과 같은 라이브러리가 필요할 수 있습니다. 각 라이브러리는 고유한 장점과 단점을 가지고 있으므로, 프로젝트의 요구 사항에 따라 적절한 라이브러리를 선택하는 것이 중요합니다.
+* __간결함__ : 함수형 컴포넌트는 코드가 짧고 간결합니다.
+
+* __직관적인 상태 관리__ : 훅을 사용하여 상태와 생명주기를 직관적으로 관리할 수 있습니다.
+
+* __테스트 용이__ : 함수형 컴포넌트는 순수 함수에 가깝기 때문에 테스트하기 쉽습니다.
+
+#### __단점__
+
+* __초기 학습 곡선__ : 훅의 개념과 사용법을 처음 접하는 개발자에게는 다소 어려울 수 있습니다.
+
+### __클래스형 컴포넌트 (Class Components)__
+클래스형 컴포넌트는 __ES6 클래스 문법을 사용하여 작성__ 되며, 리액트 생명주기 메서드를 통해 __상태와 사이드 이펙트를 관리__ 합니다.
+
+#### __특징__
+
+* __상태와 생명주기 메서드__ : 클래스형 컴포넌트는 __상태(`state`)__ 와 __생명주기 메서드(`componentDidMount`, `componentDidUpdate`, `componentWillUnmount` 등)__ 를 통해 상태와 사이드 이펙트를 관리합니다.
+
+* __this 바인딩__ : 클래스형 컴포넌트에서는 `this` 키워드를 사용하여 클래스의 속성과 메서드에 접근해야 합니다.
+  
+#### __예시__
+
+```javascript
+import React, { Component } from 'react';
+
+class Counter extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { count: 0 };
+  }
+
+  componentDidMount() {
+    document.title = `You clicked ${this.state.count} times`;
+  }
+
+  componentDidUpdate() {
+    document.title = `You clicked ${this.state.count} times`;
+  }
+
+  incrementCount = () => {
+    this.setState({ count: this.state.count + 1 });
+  };
+
+  render() {
+    return (
+      <div>
+        <p>You clicked {this.state.count} times</p>
+        <button onClick={this.incrementCount}>Click me</button>
+      </div>
+    );
+  }
+}
+```
+
+#### __장점__
+
+* __명확한 생명주기 관리__ : 생명주기 메서드를 통해 상태와 사이드 이펙트를 명확하게 관리할 수 있습니다.
+
+* __전통적 접근__ : 객체 지향 프로그래밍(OOP)에 익숙한 개발자에게 친숙합니다.
+
+#### __단점__
+
+* __복잡한 문법__ : 클래스형 컴포넌트는 함수형 컴포넌트에 비해 더 복잡한 문법을 가지고 있습니다.
+
+* __this 바인딩 문제__ : `this` 키워드를 바인딩해야 하는 번거로움이 있습니다.
+
+### __함수형 컴포넌트와 클래스형 컴포넌트의 선택 기준__
+
+* __새 프로젝트__ : 함수형 컴포넌트와 훅을 사용하는 것이 권장됩니다. 리액트 커뮤니티와 공식 문서에서도 함수형 컴포넌트를 우선적으로 사용하는 것을 추천합니다.
+
+* __기존 코드베이스__ : 이미 클래스형 컴포넌트를 많이 사용하고 있는 기존 프로젝트에서는 일관성을 위해 계속 클래스형 컴포넌트를 사용하는 것이 좋을 수 있습니다.
+
+* __성능 및 최적화__ : 함수형 컴포넌트와 훅은 리액트의 최신 기능과 최적화 기법을 더 잘 활용할 수 있습니다.
+
+### __마무리__
+리액트 컴포넌트를 작성할 때는 __함수형 컴포넌트__ 와 __클래스형 컴포넌트__ 중 프로젝트와 팀의 요구 사항에 맞는 방식을 선택하면 됩니다. 함수형 컴포넌트는 __간결하고 직관적인 코드__ 를 작성할 수 있게 해주며, 클래스형 컴포넌트는 __명확한 구조와 생명주기 관리__ 를 제공합니다. 최신 리액트 개발에서는 함수형 컴포넌트와 훅을 사용하는 것이 점점 더 일반화되고 있습니다.

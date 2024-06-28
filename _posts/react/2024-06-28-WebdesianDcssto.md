@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 리액트의 SPA, Router와 SPA의 단점
-date: 2024-06-28 09:12 +0900
+date: 2024-06-26 09:12 +0900
 description: REACT
 image: ../assets/img/react12.jpg
 category: react

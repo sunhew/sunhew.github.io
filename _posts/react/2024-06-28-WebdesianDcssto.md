@@ -1,93 +1,141 @@
 ---
 layout: post
-title: 리액트의 SPA, Router와 SPA의 단점
-date: 2024-06-26 09:12 +0900
+title: 리액트의 생명 주기 함수(LifeCycle)
+date: 2024-06-28 09:12 +0900
 description: REACT
-image: ../assets/img/react12.jpg
+image: ../assets/img/react13.jpg
 category: react
-tags: reactSPA,Router와SPA의단점 SPA Router SPA의단점 react
+tags: react생명주기함수(LifeCycle) 생명주기함수 함수 LifeCycle react
 published: true
 sitemap: true
 ---
 
 # REACT
-해당 포스팅에서는 REACT의 SPA, Router와 SPA의 단점에 대해 다룹니다.  <br />
+해당 포스팅에서는 REACT의 생명 주기 함수(LifeCycle)에 대해 다룹니다.  <br />
 
 
 ## __이번 포스팅 목차__
-* REACT의 SPA, Router와 SPA의 단점 <br/>
+* REACT의 생명 주기 함수(LifeCycle) <br/>
 
-## __리액트의 SPA (Single Page Application)__<br/>
-__SPA (Single Page Application)__ 는 사용자와의 상호작용을 위해 하나의 HTML 페이지를 로드하고, 필요한 경우 동적으로 콘텐츠를 갱신하는 웹 애플리케이션입니다. SPA는 전통적인 멀티 페이지 애플리케이션과 달리 페이지 전체를 새로 고치는 대신, __클라이언트 사이드에서 콘텐츠를 로드하고 업데이트__ 합니다.
+## __리액트의 생명 주기 함수(LifeCycle)__<br/>
+__생명 주기 함수(LifeCycle)__ 는 클래스형 컴포넌트에서 컴포넌트가 생성되고, 업데이트되며, 소멸되는 과정을 제어하기 위해 사용됩니다. 함수형 컴포넌트에서는 생명주기 함수 대신 __훅(Hooks)__ 을 사용하여 동일한 작업을 수행할 수 있습니다. 여기서는 클래스형 컴포넌트의 생명주기 함수에 대해 자세히 설명하고, 함수형 컴포넌트에서의 훅 사용법도 간단하게 설명해보겠습니다.
 
-### __특징__
+### __클래스형 컴포넌트의 생명주기__
+클래스형 컴포넌트의 생명주기는 크게 세 가지 단계로 나눌 수 있습니다. 각 단계에는 여러 생명 주기 함수가 존재 합니다.
 
-* __클라이언트 사이드 렌더링__: 서버로부터 전체 HTML 페이지를 로드하는 대신, 필요한 데이터를 가져와 클라이언트에서 렌더링합니다.
+1. __마운팅(Mounting)__: 컴포넌트가 생성되어 DOM에 삽입될 때 호출됩니다.
 
-* __빠른 상호작용__: 페이지 전체를 새로 고치지 않으므로, 사용자 상호작용이 빠릅니다.
+2. __업데이트(Updating)__: 컴포넌트의 상태나 속성이 변경되어 다시 렌더링될 때 호출됩니다.
 
-* __단일 진입접__: 하나의 HTML 파일을 사용하여 여러 뷰를 동적으로 관리합니다.
+3. __언마운팅(Unmounting)__: 컴포넌트가 DOM에서 제거될 때 호출됩니다.
 
-## __React Router__
-__React Router__ 는 리액트 애플리케이션에서 __라우팅__ 을 관리하는 표준 라이브러리입니다. 이를 통해 SPA에서 URL에 따라 서로 다른 컴포넌트를 렌더링할 수 있습니다.
+### __1. 마운팅(Mounting)의 생명주기 함수__
 
-### __주요 개념__
-
-* __Router__: 애플리케이션의 라우팅 컨텍스트를 제공합니다.
-
-* __Route__: 특정 URL 경로에 따라 렌더링할 컴포넌트를 정의합니다.
-
-* __Link__: 용자가 클릭할 수 있는 네비게이션 링크를 제공합니다.
+#### __constructor(props)__
+컴포넌트가 처음 생성될 때 호출되며, 상태 초기화 및 클래스 필드를 바인딩하는 데 사용됩니다.
 
 ```javascript
-import React from 'react';
-import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
-
-function Home() {
-  return <h2>Home</h2>;
+class MyComponent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { count: 0 };
+  }
 }
-
-function About() {
-  return <h2>About</h2>;
-}
-
-function App() {
-  return (
-    <Router>
-      <div>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/about">About</Link>
-            </li>
-          </ul>
-        </nav>
-        <Switch>
-          <Route path="/" exact component={Home} />
-          <Route path="/about" component={About} />
-        </Switch>
-      </div>
-    </Router>
-  );
-}
-
-export default App;
 ```
 
-### __SPA의 단점__
+#### __componentDidMount()__
+컴포넌트가 처음 렌더링된 후에 호출됩니다. 여기서 __AJAX 요청__ 이나 __타이머 설정__ 등의 작업을 수행할 수 있습니다.
 
-* __초기 로딩 시간 증가__: SPA는 __초기 로딩 시__ 모든 필요한 자바스크립트, CSS 파일을 불러와야 하므로 초기 로딩 시간이 길어질 수 있습니다. 이는 사용자 경험을 저하시킬 수 있습니다.
+```javascript
+class MyComponent extends React.Component {
+  componentDidMount() {
+    console.log('Component has mounted');
+    // 데이터 가져오기 등의 작업
+  }
+}
+```
 
-* __SEO 문제__: SPA는 클라이언트 사이드에서 콘텐츠를 동적으로 생성하므로, __검색 엔진 최적화(SEO)__ 가 어렵습니다. 검색 엔진 크롤러가 자바스크립트를 실행하지 못하면 페이지 콘텐츠를 인덱싱하지 못할 수 있습니다.
+### __2. 업데이트(Updating)의 생명주기 함수__
 
-* __네트워크 및 성능 문제__: SPA는 __네트워크 상태__ 와 __클라이언트 성능__ 에 민감합니다. 클라이언트의 성능이 낮거나 네트워크 상태가 불안정하면 애플리케이션 성능에 부정적인 영향을 미칠 수 있습니다.
+#### __shouldComponentUpdate(nextProps, nextState)__
+컴포넌트가 리렌더링될지 여부를 결정합니다. __성능 최적화__ 를 위해 사용됩니다. 기본적으로는 true를 반환합니다.
 
-* __복잡한 상태 관리__: SPA는 복잡한 사용자 상호작용과 다양한 상태를 관리해야 하므로, __상태 관리__ 가 복잡해질 수 있습니다. 이는 코드의 복잡성을 증가시키고 유지보수를 어렵게 만듭니다.
+```javascript
+class MyComponent extends React.Component {
+  shouldComponentUpdate(nextProps, nextState) {
+    return nextState.count !== this.state.count;
+  }
+}
+```
 
-* __메모리 누수__: SPA는 한 페이지에서 여러 컴포넌트를 동적으로 교체하면서 실행되므로, __메모리 누수__ 문제가 발생할 수 있습니다. 적절한 정리 작업을 수행하지 않으면 메모리 사용량이 계속 증가할 수 있습니다.
+#### __componentDidUpdate(prevProps, prevState, snapshot)__
+컴포넌트가 업데이트된 후에 호출됩니다. DOM을 조작하거나 __네트워크 요청__ 을 할 수 있습니다.
+
+```javascript
+class MyComponent extends React.Component {
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.count !== this.state.count) {
+      console.log('Component did update');
+    }
+  }
+}
+```
+
+### __3. 언마운팅(Unmounting)의 생명주기 함수__
+
+#### __componentWillUnmount()__
+컴포넌트가 DOM에서 제거되기 전에 호출됩니다. __타이머 정리, 구독 해제__ 등의 작업을 수행할 수 있습니다.
+
+```javascript
+class MyComponent extends React.Component {
+  componentWillUnmount() {
+    console.log('Component will unmount');
+    // 정리 작업 수행
+  }
+}
+```
+
+### __함수형 컴포넌트의 훅(Hooks)__
+함수형 컴포넌트에서는 이전에 다뤘었던 __useState, useEffect__ 등의 훅을 사용하여 생명주기와 유사한 작업을 수행할 수 있습니다.
+
+### __useEffect 훅__
+__useEffect__ 는 컴포넌트가 렌더링될 때와 업데이트될 때 실행됩니다. 두 번째 인자로 전달되는 의존성 배열을 통해 특정 값이 변경될 때만 실행되도록 할 수 있습니다. 컴포넌트가 언마운트될 때는 정리 함수가 호출됩니다.
+
+```javascript
+import React, { useState, useEffect } from 'react';
+
+function MyComponent() {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    console.log('Component did mount or update');
+    
+    return () => {
+      console.log('Component will unmount');
+      // 정리 작업 수행
+    };
+  }, [count]); // count가 변경될 때마다 실행
+
+  return (
+    <div>
+      <p>You clicked {count} times</p>
+      <button onClick={() => setCount(count + 1)}>Click me</button>
+    </div>
+  );
+}
+```
 
 ### __마무리__
-__SPA (Single Page Application)__ 는 빠른 상호작용과 사용자 경험을 제공하지만, __초기 로딩 시간, SEO 문제, 네트워크 및 성능 문제, 복잡한 상태 관리, 메모리 누수__ 등의 단점이 존재합니다. __React Router__ 를 사용하여 SPA에서 효율적으로 라우팅을 관리할 수 있으며, 이러한 단점을 보완하기 위해 코드 스플리팅, 서버 사이드 렌더링(SSR) 등의 기술을 적용할 수 있습니다.
+리액트의 __생명주기 함수__ 는 컴포넌트가 생성되고, 업데이트되며, 소멸되는 과정을 제어하기 위해 사용됩니다. 클래스형 컴포넌트에서는 다양한 생명주기 함수가 존재하며, 함수형 컴포넌트에서는 __useEffect__ 와 같은 __훅(Hooks)__ 을 사용하여 동일한 작업을 수행할 수 있습니다. 생명주기 함수를 올바르게 사용함으로써 컴포넌트의 상태와 동작을 효율적으로 관리할 수 있습니다. 마무리로 생명주기 함수를 요약해보겠습니다.
+
+* __constructor(props)__: 상태 초기화 및 클래스 필드 바인딩
+
+* __componentDidMount()__: 컴포넌트가 마운트된 후 실행
+
+* __shouldComponentUpdate(nextProps, nextState)__: 컴포넌트가 리렌더링될지 여부 결정
+
+* __componentDidUpdate(prevProps, prevState, snapshot)__: 컴포넌트가 업데이트된 후 실행
+
+* __componentWillUnmount()__: 컴포넌트가 언마운트되기 전에 실행
+
+__오늘도 제 블로그에 방문해주셔서 감사합니다!__

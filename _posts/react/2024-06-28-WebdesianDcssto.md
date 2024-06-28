@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 리액트의 생명 주기 함수(LifeCycle)
-date: 2024-06-28 09:12 +0900
+date: 2024-06-27 09:12 +0900
 description: REACT
 image: ../assets/img/react13.jpg
 category: react

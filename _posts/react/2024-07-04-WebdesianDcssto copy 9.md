@@ -1,7 +1,7 @@
 ---
 layout: post
 title: REACT의 async-await와 Promise의 차이
-date: 2024-07-05 10:13 +0900
+date: 2024-07-04 10:13 +0900
 description: REACT
 image: ../assets/img/react21.jpg
 category: react

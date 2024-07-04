@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 리액트의 state vs props
-date: 2024-07-04 18:30 +0900
+date: 2024-07-02 16:30 +0900
 description: REACT
 image: ../assets/img/react18.jpg
 category: react

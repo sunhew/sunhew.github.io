@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 왜 state를 직접 바꾸지 않고 useState를 사용해야 하나?
-date: 2024-07-04 19:22 +0900
+date: 2024-07-03 19:22 +0900
 description: REACT
 image: ../assets/img/react19.jpg
 category: react

@@ -1,11 +1,11 @@
 ---
 layout: post
-title: REACT의 컴포넌트 코드
-date: 2024-08-27 17:34 +0900
+title: REACT와 NODE.JS의 차이점 그리고 리액트의 코드
+date: 2024-08-27 13:15 +0900
 description: REACT
 image: ../assets/img/reactcode.gif
 category: react
-tags: react컴포넌트 컴포넌트 react
+tags: 리액트코드 REACTCODE code react node.js react와node.js의차이점
 published: true
 sitemap: true
 ---
